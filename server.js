@@ -16,6 +16,14 @@ app.use(bodyParser.json());
 // Static Folder Setup (public)
 app.use(express.static(path.join(__dirname, 'public')));
 
+// SEO Robots & Sitemap Support
+app.get('/robots.txt', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'robots.txt'));
+});
+app.get('/sitemap.xml', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+});
+
 // Routes Import
 const indexRoutes = require('./routes/index');
 const productRoutes = require('./routes/products');

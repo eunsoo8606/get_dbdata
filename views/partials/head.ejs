@@ -6,12 +6,27 @@
     <title><%= typeof pageTitle !== 'undefined' ? pageTitle : '마마트레이딩 | 3분 안심 한도조회 · 당일 입금' %></title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="마마트레이딩 - 신용점수 하락 걱정없는 3분 안심 한도조회. 직장인, 무직자, 여성, 사업자, 저신용자 당일 비대면 맞춤 대출">
-    <meta name="keywords" content="마마트레이딩, 이지론, 안심한도조회, 비상금대출, 무직자대출, 직장인대출, 여성우대대출, 사업자대출, 당일입금">
+    <meta name="description" content="마마트레이딩 - 신용점수 하락 걱정 없는 3분 안심 가심사! 직장인, 무직자, 주부, 사업자, 고금리 대환 맞춤 대출. 복잡한 서류 없이 15분 내 당일 입금 완료.">
+    <meta name="keywords" content="마마트레이딩, 대출, 당일입금, 안심한도조회, 직장인대출, 무직자대출, 비상금대출, 사업자대출, 주부대출, 여성대출, 대환대출, 저금리대출">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="마마트레이딩">
+    <link rel="canonical" href="https://mamatrading.co.kr">
+
+    <!-- Open Graph (Naver, Kakao, Facebook 등 검색/공유) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="마마트레이딩 | 든든한 1:1 맞춤 안심 대출">
-    <meta property="og:description" content="신용 영향 없는 안심 가심사! 오늘 신청하고 15분 내 당일 입금 완료">
-    
+    <meta property="og:site_name" content="마마트레이딩">
+    <meta property="og:title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : '마마트레이딩 | 1분 안심 한도조회 · 15분 당일 입금 맞춤 대출' %>">
+    <meta property="og:description" content="신용점수 영향 0% 안심 가심사! 복잡한 서류 없이 100% 비밀 보장 모바일 30초 신청 및 15분 당일 입금">
+    <meta property="og:image" content="https://mamatrading.co.kr/images/main.png">
+    <meta property="og:url" content="https://mamatrading.co.kr">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="마마트레이딩 | 1분 안심 한도조회 · 당일 입금 대출">
+    <meta name="twitter:description" content="신용점수 영향 없는 30초 가심사! 직장인, 무직자, 사업자 1:1 맞춤 대출 당일 입금">
+    <meta name="twitter:image" content="https://mamatrading.co.kr/images/main.png">
+
     <!-- Google Fonts & Bootstrap Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,5 +36,56 @@
     <!-- Separated CSS for Web and Mobile -->
     <link rel="stylesheet" href="/css/style-web.css">
     <link rel="stylesheet" href="/css/style-mobile.css">
+
+    <!-- JSON-LD Structured Data for Google/Naver Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "마마트레이딩 (MAMA TRADING)",
+      "url": "https://mamatrading.co.kr",
+      "logo": "https://mamatrading.co.kr/images/main.png",
+      "description": "복잡한 서류와 지점 방문 없는 모바일 3분 안심 가심사 및 15분 당일 입금 맞춤 대출 서비스",
+      "currenciesAccepted": "KRW",
+      "paymentAccepted": "계좌이체",
+      "priceRange": "₩1,000,000 - ₩100,000,000",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "KR",
+        "addressRegion": "서울특별시"
+      },
+      "areaServed": "KR",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "대출 상품 서비스",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "FinancialProduct",
+              "name": "직장인 신속 대출",
+              "description": "재직 1개월 이상 직장인 대상 최대 5,000만원 당일 한도 우대"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "FinancialProduct",
+              "name": "무직자·취준생 비상금 대출",
+              "description": "소득증빙 없는 모바일 30초 무서류 가심사 최대 500만원"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "FinancialProduct",
+              "name": "사업자 운전자금 대출",
+              "description": "자영업자 및 법인 대표 대상 최대 1억원 당일 결제 지원"
+            }
+          }
+        ]
+      }
+    }
+    </script>
 </head>
 <body>
