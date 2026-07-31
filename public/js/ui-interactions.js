@@ -142,16 +142,40 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // 2-1. Desktop & Mobile Review Slider Arrow Navigation (3개씩 슬라이딩)
+        const prevBtn = document.getElementById('reviewPrevBtn');
+        const nextBtn = document.getElementById('reviewNextBtn');
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                const firstCard = reviewsGrid.querySelector('.review-card');
+                if (!firstCard) return;
+                const isMobile = window.innerWidth <= 768;
+                const scrollStep = isMobile ? (firstCard.offsetWidth + 16) : (firstCard.offsetWidth + 24) * 3;
+                reviewsGrid.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', () => {
+                const firstCard = reviewsGrid.querySelector('.review-card');
+                if (!firstCard) return;
+                const isMobile = window.innerWidth <= 768;
+                const scrollStep = isMobile ? (firstCard.offsetWidth + 16) : (firstCard.offsetWidth + 24) * 3;
+                reviewsGrid.scrollBy({ left: scrollStep, behavior: 'smooth' });
+            });
+        }
+
         // 3.5초마다 자동으로 알아서 다음 카드로 넘어가기 (Auto-Play)
         const startAutoSlide = () => {
             if (autoSlideTimer) clearInterval(autoSlideTimer);
             autoSlideTimer = setInterval(() => {
                 const firstCard = reviewsGrid.querySelector('.review-card');
                 if (!firstCard) return;
-                const cardWidth = firstCard.offsetWidth + 16;
-                const totalCards = dots.length;
+                const isMobile = window.innerWidth <= 768;
+                const cardWidth = firstCard.offsetWidth + (isMobile ? 16 : 24);
+                const step = isMobile ? 1 : 3;
+                const totalCards = reviewsGrid.querySelectorAll('.review-card').length;
                 
-                currentReviewIndex = (currentReviewIndex + 1) % totalCards;
+                currentReviewIndex = (currentReviewIndex + step) % totalCards;
                 reviewsGrid.scrollTo({
                     left: currentReviewIndex * cardWidth,
                     behavior: 'smooth'
@@ -159,7 +183,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 3500);
         };
 
-        // 모바일 터치 중일 때는 자동 넘김 잠시 멈춤(Pause) -> 손 떼면 재개(Resume)
+        // 마우스 호버 및 터치 시 일시정지 (Pause) -> 마우스 이탈 및 터치 종료 시 재개 (Resume)
+        reviewsGrid.addEventListener('mouseenter', () => {
+            if (autoSlideTimer) clearInterval(autoSlideTimer);
+        });
+
+        reviewsGrid.addEventListener('mouseleave', () => {
+            startAutoSlide();
+        });
+
         reviewsGrid.addEventListener('touchstart', () => {
             if (autoSlideTimer) clearInterval(autoSlideTimer);
         }, { passive: true });
@@ -168,10 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
             startAutoSlide();
         }, { passive: true });
 
-        // 모바일 접속 시 자동 슬라이드 구동
-        if (window.innerWidth <= 768) {
-            startAutoSlide();
-        }
+        // 슬라이드 자동 구동 시작
+        startAutoSlide();
     }
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
