@@ -1,0 +1,465 @@
+/* ==========================================================================
+   마마트레이딩 (MAMA TRADING) - Mobile Dedicated Optimization Stylesheet
+   ========================================================================== */
+
+/* Mobile Slide Nav Drawer */
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+}
+
+.mobile-nav-drawer {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 290px;
+    height: 100%;
+    background: #FFF;
+    z-index: 10001;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-nav-drawer.open { right: 0; }
+.mobile-nav-overlay.open { display: block; }
+
+.drawer-header {
+    padding: 20px;
+    background: #0F172A;
+    color: #FFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.drawer-logo {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--naver-green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.drawer-close { color: #FFF; font-size: 1.4rem; cursor: pointer; }
+.drawer-menu { padding: 20px; flex-grow: 1; overflow-y: auto; }
+
+.drawer-menu li a {
+    display: block;
+    padding: 14px 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.drawer-submenu-title {
+    font-size: 0.85rem;
+    color: var(--naver-green-dark);
+    font-weight: 800;
+    margin: 20px 0 8px;
+}
+
+.drawer-menu li.sub-item a {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: none;
+}
+
+.drawer-footer { padding: 20px; border-top: 1px solid var(--border-color); }
+.btn-drawer-call {
+    display: block;
+    width: 100%;
+    background: var(--naver-green);
+    color: #FFF;
+    text-align: center;
+    font-weight: 800;
+    padding: 14px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 12px rgba(3, 199, 90, 0.3);
+}
+
+/* ==========================================================================
+   Responsive Breakpoint Rules (Tablet & Mobile Devices)
+   ========================================================================== */
+
+/* Tablet Breakpoint (1024px 이하) */
+@media (max-width: 1024px) {
+    .container { padding: 0 20px; }
+    .why-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .calc-grid { grid-template-columns: 1fr; gap: 32px; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Mobile Breakpoint (768px 이하 스마트폰 최적화) */
+@media (max-width: 768px) {
+    body { padding-bottom: 105px; }
+
+    /* Header & Navigation Mobile */
+    .top-bar-content { flex-direction: column; gap: 6px; text-align: center; font-size: 0.75rem; }
+    .top-contacts { display: none; }
+    .gnb { display: none; }
+    .btn-kakao-top { display: none; }
+    .mobile-menu-toggle { display: block; font-size: 1.8rem; color: var(--text-primary); cursor: pointer; }
+
+    /* Hero Section Mobile Compact Optimization */
+    .hero-sticky-wrapper {
+        height: 115vh !important; /* 모바일 스크롤 피로도를 대폭 낮춘 축소 트랙 */
+    }
+    .hero-section {
+        height: 88vh !important;
+        min-height: 88vh !important;
+        padding: 75px 0 0 !important;
+        background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.88)), url('/images/main_m.png') no-repeat center center / cover !important;
+    }
+    .hero-full-container {
+        margin-top: 75px !important;
+        transform: translateY(25px) !important;
+    }
+    .hero-intro-area {
+        transform: translateY(0) !important;
+    }
+    .trust-pill { font-size: 0.76rem; padding: 5px 14px; margin-bottom: 12px; }
+    .hero-title { font-size: 2.1rem !important; line-height: 1.25 !important; margin-bottom: 12px !important; letter-spacing: -0.8px; }
+    .hero-desc { font-size: 0.85rem !important; line-height: 1.45 !important; }
+
+    /* Hero Giant Bottom Slide Text Mobile Block Layout (2줄 수직 대형 수택) */
+    .hero-giant-slide-bar {
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        padding: 0 0 12px 0 !important;
+    }
+    .giant-left-text.text-outline,
+    .giant-right-text.text-solid {
+        font-size: 3.3rem !important;
+        letter-spacing: -1.5px !important;
+        text-align: center !important;
+        line-height: 1.05 !important;
+    }
+
+    /* 2번째 섹션 모바일 곡선 오버랩 */
+    .why-us-section {
+        padding: 70px 0 60px;
+        margin-top: -30px;
+        border-radius: 28px 28px 0 0;
+    }
+    .section-title { font-size: 1.7rem; }
+    .section-desc { font-size: 0.92rem; }
+    .why-grid { grid-template-columns: 1fr; gap: 14px; }
+    .why-card-top { min-height: 100px; padding: 16px 12px; }
+
+    /* Calculator Mobile */
+    .calculator-section { padding: 60px 0; }
+    .calc-card { padding: 24px 18px; }
+    .slider-title { font-size: 0.95rem; }
+    .slider-value { font-size: 1.15rem; }
+    .calc-result-box { padding: 24px 18px; }
+    .res-main-val { font-size: 1.8rem; }
+
+    /* Process Mobile */
+    .process-section { padding: 60px 0; }
+    .process-grid { grid-template-columns: 1fr; gap: 16px; }
+    .process-card { padding: 24px 18px; }
+    .p-step-num { font-size: 1.8rem; margin-bottom: 6px; }
+
+    /* Products Mobile */
+    .products-section { padding: 60px 0; }
+    .products-grid { grid-template-columns: 1fr; gap: 20px; }
+    .product-card { padding: 24px 20px; }
+    .p-title { font-size: 1.2rem; }
+
+    /* Reviews Banner & Grid Mobile */
+    .reviews-section { padding: 60px 0; }
+    .counselor-banner-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 18px;
+        gap: 20px;
+    }
+    .counselor-img { width: 110px; height: 110px; }
+    .counselor-info h3 { font-size: 1.2rem; }
+    .counselor-info p { font-size: 0.88rem; }
+    /* Reviews Mobile Touch Slider (모바일 1개 카드 터치 슬라이더 연출) */
+    .reviews-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch;
+        gap: 16px !important;
+        padding: 10px 4px 20px !important;
+        margin-top: 24px !important;
+        scrollbar-width: none; /* 스크롤바 감추기 */
+    }
+    .reviews-grid::-webkit-scrollbar { display: none; }
+
+    .review-card {
+        flex: 0 0 92% !important; /* 모바일에서 1개 카드가 화면 가득 보이게 지정 */
+        scroll-snap-align: center !important;
+        scroll-snap-stop: always !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Mobile Slider Pagination Dots */
+    .mobile-slider-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 18px;
+        margin-bottom: 42px; /* 아래 FAQ 섹션과 겹침 방지 여백 */
+        position: relative;
+        z-index: 5;
+    }
+    .mobile-slider-dots .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #CBD5E1;
+        transition: all 0.3s ease;
+    }
+    .mobile-slider-dots .dot.active {
+        width: 24px;
+        border-radius: 10px;
+        background: var(--naver-green);
+    }
+
+    /* FAQ Mobile */
+    .faq-section { padding: 60px 0; }
+    .faq-question { font-size: 0.95rem; padding: 16px 18px; }
+    .faq-answer { padding: 0 18px 16px; font-size: 0.88rem; }
+
+    /* Fixed Bottom Bar Mobile Dedicated Ultra-Slim Responsive */
+    .fixed-bottom-bar-wrapper {
+        padding-bottom: env(safe-area-inset-bottom);
+        box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* 1. 실시간 이용현황 티커 높이 조율 및 깨짐 방지 */
+    .fixed-ticker-ribbon {
+        padding: 6px 0;
+        background: rgba(3, 199, 90, 0.14);
+        border-bottom: 1px solid rgba(3, 199, 90, 0.25);
+    }
+    .ticker-flex {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        overflow: hidden;
+    }
+    .f-ticker-label {
+        font-size: 0.72rem;
+        padding: 3px 8px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    .f-ticker-window {
+        font-size: 0.76rem;
+        height: 24px;
+        line-height: 24px;
+        overflow: hidden;
+        flex-grow: 1;
+    }
+    .f-ticker-list li {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.76rem;
+    }
+
+    /* 2. 하단 신청 폼 모바일 스마트 2줄 레이아웃 */
+    .fixed-form-area {
+        padding: 6px 10px 8px;
+    }
+    .fixed-form-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .f-form-title {
+        display: none;
+    }
+
+    .f-input-fields {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        width: 100%;
+    }
+
+    /* 1라인: 성함(26%) + 연락처(46%) + 약관 동의(25%) -> 가로 1줄 100% 보장 */
+    .f-inp-sm { width: 25% !important; height: 38px !important; font-size: 0.82rem !important; padding: 0 6px !important; border-radius: 6px !important; }
+    .f-inp-md { width: 46% !important; height: 38px !important; font-size: 0.82rem !important; padding: 0 6px !important; border-radius: 6px !important; }
+    
+    .f-agree-mini {
+        font-size: 0.72rem;
+        height: 38px;
+        width: 26% !important;
+        gap: 2px;
+        color: #CBD5E1;
+        justify-content: center;
+        background: rgba(255,255,255,0.08);
+        border-radius: 6px;
+        padding: 0 4px;
+    }
+    .f-agree-mini label { font-size: 0.72rem; white-space: nowrap; }
+    .btn-terms-pop { font-size: 0.68rem; color: #94A3B8; padding: 0; }
+
+    /* 2라인: 한 칸 내려온 넓은 희망금액 드롭다운(100% 통 가로 배치) */
+    .f-sel-md { 
+        width: 100% !important; 
+        height: 40px !important; 
+        font-size: 0.88rem !important; 
+        padding: 0 10px !important; 
+        border-radius: 6px !important;
+        margin-top: 2px;
+    }
+
+    /* ==========================================================================
+       Products Subpage (/products/*) Mobile Dedicated Optimization
+       ========================================================================== */
+    .sub-hero-banner {
+        padding: 40px 0 30px !important;
+        text-align: center;
+    }
+    .sub-hero-banner h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 8px !important;
+    }
+    .sub-hero-banner p {
+        font-size: 0.92rem !important;
+        line-height: 1.5 !important;
+    }
+    .sub-badge {
+        font-size: 0.76rem !important;
+        padding: 5px 14px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .sub-page-section {
+        padding: 30px 0 60px !important;
+    }
+
+    .product-detail-box {
+        padding: 24px 18px !important;
+        border-radius: 16px !important;
+    }
+
+    /* Product Header Card Mobile */
+    .pd-header-card {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 14px !important;
+        padding-bottom: 20px !important;
+        margin-bottom: 20px !important;
+    }
+    .pd-icon-big {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 1.8rem !important;
+        margin: 0 auto !important;
+    }
+    .pd-title-area h2 {
+        font-size: 1.45rem !important;
+        margin-top: 6px !important;
+    }
+
+    /* Spec Grid 2 Column Mobile (글자 밖으로 삐져나감 100% 방지) */
+    .pd-spec-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        margin-bottom: 24px !important;
+    }
+    .spec-item {
+        padding: 14px 10px !important;
+        border-radius: 12px !important;
+        word-break: keep-all !important;
+        overflow: hidden !important;
+    }
+    .spec-item .s-label {
+        font-size: 0.76rem !important;
+        margin-bottom: 4px !important;
+    }
+    .spec-item .s-val {
+        font-size: 0.92rem !important;
+        line-height: 1.3 !important;
+        white-space: normal !important;
+        word-break: keep-all !important;
+        display: block !important;
+    }
+
+    /* Feature List Mobile */
+    .pd-features-box {
+        padding: 20px 16px !important;
+        border-radius: 14px !important;
+    }
+    .pd-features-box h3 {
+        font-size: 1.08rem !important;
+        margin-bottom: 14px !important;
+    }
+    .pd-feature-list li {
+        font-size: 0.88rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* ==========================================================================
+       Process Subpage (/process) Mobile Dedicated Optimization
+       ========================================================================== */
+    .process-detail-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .p-detail-step {
+        padding: 20px 16px !important;
+        border-radius: 14px !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .p-step-badge {
+        font-size: 0.8rem !important;
+        padding: 4px 12px !important;
+        border-radius: 20px !important;
+        align-self: flex-start !important;
+    }
+
+    .p-detail-content h3 {
+        font-size: 1.18rem !important;
+        margin-bottom: 6px !important;
+        line-height: 1.35 !important;
+    }
+
+    .p-detail-content p {
+        font-size: 0.88rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 12px !important;
+    }
+
+    .p-check-list li {
+        font-size: 0.85rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: 6px !important;
+    }
+
+    /* Footer Mobile */
+    .terms-grid { grid-template-columns: 1fr; gap: 12px; }
+    .t-item.full-width { grid-column: span 1; }
+    .footer-company-info { font-size: 0.8rem; }
+}

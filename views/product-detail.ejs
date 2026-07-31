@@ -1,0 +1,65 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<div class="sub-hero-banner">
+    <div class="container">
+        <span class="sub-badge"><i class="bi <%= product.icon %>"></i> CUSTOM PRODUCT</span>
+        <h1><%= product.name %></h1>
+        <p><%= product.summary %></p>
+    </div>
+</div>
+
+<section class="sub-page-section">
+    <div class="container">
+        <div class="product-detail-box">
+            
+            <div class="pd-header-card">
+                <div class="pd-icon-big"><i class="bi <%= product.icon %>"></i></div>
+                <div class="pd-title-area">
+                    <span class="p-badge hot"><%= product.badge %></span>
+                    <h2><%= product.name %></h2>
+                    <p>대상: <strong><%= product.target %></strong></p>
+                </div>
+            </div>
+
+            <div class="pd-spec-grid">
+                <div class="spec-item">
+                    <span class="s-label">대출 한도</span>
+                    <strong class="s-val highlight"><%= product.maxAmount %></strong>
+                </div>
+                <div class="spec-item">
+                    <span class="s-label">대출 금리</span>
+                    <strong class="s-val"><%= product.interestRate %></strong>
+                </div>
+                <div class="spec-item">
+                    <span class="s-label">상환 기간</span>
+                    <strong class="s-val"><%= product.period %></strong>
+                </div>
+                <div class="spec-item">
+                    <span class="s-label">상환 방식</span>
+                    <strong class="s-val">원리금균등 / 만기일시 상환</strong>
+                </div>
+            </div>
+
+            <div class="pd-features-box">
+                <h3><i class="bi bi-star-fill text-naver-green"></i> <%= product.name %>의 핵심 혜택 및 특징</h3>
+                <ul class="pd-feature-list">
+                    <% product.features.forEach(function(feat) { %>
+                        <li><i class="bi bi-check-circle-fill"></i> <%= feat %></li>
+                    <% }); %>
+                </ul>
+            </div>
+
+            <div class="sub-cta-box" style="margin-top: 30px;">
+                <h3>"<%= product.name %> 3분 안심 한도조회"</h3>
+                <p style="margin-bottom: 15px; color: rgba(255,255,255,0.8);">단순 한도조회는 신용점수에 전혀 영향을 주지 않습니다.</p>
+                <a href="/#applicationFormArea" class="btn-sub-apply">지금 바로 신청하기 <i class="bi bi-arrow-right"></i></a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<%- include('partials/modals') %>
+<%- include('partials/floating-bar') %>
+<%- include('partials/footer') %>

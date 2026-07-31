@@ -1,0 +1,77 @@
+<!-- 1. Top Notice Header -->
+<div class="top-bar">
+    <div class="container top-bar-content">
+        <div class="registration-badge">
+            <span class="pulse-dot"></span>
+            <span class="reg-text">지자체 정식 등록 대부중개업체 : <strong>2024-서울강남-0105</strong></span>
+            <button type="button" class="btn-verify-link" onclick="openModal('legalModal')">등록 검증 <i class="bi bi-shield-check"></i></button>
+        </div>
+    </div>
+</div>
+
+<!-- 2. Navigation Header -->
+<header class="header">
+    <div class="container header-container">
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="bi bi-shield-fill-check"></i></div>
+            <div class="logo-text">
+                <span class="brand-name">MAMA TRADING</span>
+                <span class="brand-sub">마마트레이딩 대부중개</span>
+            </div>
+        </a>
+
+        <nav class="gnb">
+            <ul>
+                <li class="<%= typeof currentNav !== 'undefined' && currentNav === 'home' ? 'active' : '' %>"><a href="/">홈</a></li>
+                <li class="has-dropdown <%= typeof currentNav !== 'undefined' && currentNav === 'products' ? 'active' : '' %>">
+                    <a href="/#products">대출 상품 <i class="bi bi-chevron-down dropdown-icon"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/products/employee"><i class="bi bi-briefcase-fill"></i> 직장인/사업자 대출</a></li>
+                        <li><a href="/products/unemployed"><i class="bi bi-lightning-charge-fill"></i> 무직자/비상금 대출</a></li>
+                        <li><a href="/products/women"><i class="bi bi-heart-pulse-fill"></i> 여성/주부 우대 대출</a></li>
+                        <li><a href="/products/business"><i class="bi bi-shop"></i> 자영업/사업자 대출</a></li>
+                        <li><a href="/products/lowcredit"><i class="bi bi-person-fill-gear"></i> 저신용/다중채무 대출</a></li>
+                        <li><a href="/products/debt-consolidation"><i class="bi bi-arrow-repeat"></i> 대환/통신연체 대납대출</a></li>
+                    </ul>
+                </li>
+                <li class="<%= typeof currentNav !== 'undefined' && currentNav === 'process' ? 'active' : '' %>"><a href="/process">대출 절차</a></li>
+                <li class="<%= typeof currentNav !== 'undefined' && currentNav === 'reviews' ? 'active' : '' %>"><a href="/reviews">이용 후기</a></li>
+                <li><a href="/#calculator">실시간 대출 계산기</a></li>
+                <li><a href="/#faq">FAQ</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button class="mobile-menu-toggle" aria-label="메뉴 열기" onclick="toggleMobileNav()">
+                <i class="bi bi-list"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Slide Nav Drawer -->
+<div class="mobile-nav-overlay" id="mobileOverlay" onclick="toggleMobileNav()"></div>
+<div class="mobile-nav-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+        <div class="drawer-logo">
+            <i class="bi bi-shield-fill-check"></i> <span>마마트레이딩</span>
+        </div>
+        <button class="drawer-close" onclick="toggleMobileNav()"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <ul class="drawer-menu">
+        <li><a href="/" onclick="toggleMobileNav()"><i class="bi bi-house-door-fill"></i> 홈</a></li>
+        <li class="drawer-submenu-title"><i class="bi bi-grid-fill"></i> 대출 상품 선택</li>
+        <li class="sub-item"><a href="/products/employee" onclick="toggleMobileNav()">ㆍ 직장인/사업자 대출</a></li>
+        <li class="sub-item"><a href="/products/unemployed" onclick="toggleMobileNav()">ㆍ 무직자/비상금 대출</a></li>
+        <li class="sub-item"><a href="/products/women" onclick="toggleMobileNav()">ㆍ 여성/주부 우대 대출</a></li>
+        <li class="sub-item"><a href="/products/business" onclick="toggleMobileNav()">ㆍ 자영업/사업자 대출</a></li>
+        <li class="sub-item"><a href="/products/lowcredit" onclick="toggleMobileNav()">ㆍ 저신용/다중채무 대출</a></li>
+        <li class="sub-item"><a href="/products/debt-consolidation" onclick="toggleMobileNav()">ㆍ 대환/통신연체 대납대출</a></li>
+        <li><a href="/process" onclick="toggleMobileNav()"><i class="bi bi-list-check"></i> 대출 절차 안내</a></li>
+        <li><a href="/reviews" onclick="toggleMobileNav()"><i class="bi bi-star-fill"></i> 고객 실제 후기</a></li>
+        <li><a href="/#calculator" onclick="toggleMobileNav()"><i class="bi bi-calculator-fill"></i> 실시간 대출 계산기</a></li>
+    </ul>
+    <div class="drawer-footer">
+        <button type="button" class="btn-drawer-call" onclick="scrollToForm(); toggleMobileNav();"><i class="bi bi-lightning-charge-fill"></i> 3분 안심 한도조회</button>
+    </div>
+</div>

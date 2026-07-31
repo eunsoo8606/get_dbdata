@@ -1,0 +1,61 @@
+<!-- Fixed Bottom Live Bar & Quick Application Form -->
+<div class="fixed-bottom-bar-wrapper" id="fixedBottomBar">
+    
+    <!-- Top Live Ticker Ribbon -->
+    <div class="fixed-ticker-ribbon">
+        <div class="container ticker-flex">
+            <div class="f-ticker-label">
+                <span class="f-pulse-dot"></span>
+                <span>실시간 이용현황</span>
+            </div>
+            <div class="f-ticker-window">
+                <ul class="f-ticker-list">
+                    <li><span class="ft-badge success">승인완료</span> <strong class="ft-name">010-****-5829 님</strong> (무직자대출) <strong>500만원</strong> 당일 입금 완료! <span class="ft-time">방금 전</span></li>
+                    <li><span class="ft-badge progress">심사진행</span> <strong class="ft-name">010-****-1294 님</strong> (직장인대출) <strong>1,200만원</strong> 안심 심사 중 <span class="ft-time">1분 전</span></li>
+                    <li><span class="ft-badge success">승인완료</span> <strong class="ft-name">010-****-8392 님</strong> (여성우대) <strong>300만원</strong> 비대면 입금 완료! <span class="ft-time">3분 전</span></li>
+                    <li><span class="ft-badge success">승인완료</span> <strong class="ft-name">010-****-0124 님</strong> (사업자대출) <strong>3,000만원</strong> 한도 승인 <span class="ft-time">5분 전</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Fixed Quick Form -->
+    <div class="fixed-form-area">
+        <div class="container">
+            <form id="fixedLoanApplyForm" class="fixed-form-grid" onsubmit="handleFormSubmit(event)">
+                
+                <div class="f-form-title">
+                    <span class="f-badge">신용영향 0%</span>
+                    <strong>3분 안심 한도조회</strong>
+                </div>
+
+                <div class="f-input-fields">
+                    <input type="text" name="userName" placeholder="성함" required class="f-inp-sm">
+                    <input type="tel" name="userPhone" placeholder="연락처 ('-' 제외)" maxlength="11" required class="f-inp-md">
+                    
+                    <div class="f-agree-mini">
+                        <input type="checkbox" id="fixedAgreeChk" name="agreeChk" required checked>
+                        <label for="fixedAgreeChk">동의</label>
+                        <button type="button" class="btn-terms-pop" onclick="openModal('privacyModal')">[약관]</button>
+                    </div>
+
+                    <select name="userAmount" required class="f-sel-md">
+                        <option value="" disabled selected>희망금액 선택</option>
+                        <option value="100만원 이하">100만원 이하 (비상금)</option>
+                        <option value="300만원">300만원</option>
+                        <option value="500만원">500만원</option>
+                        <option value="1,000만원">1,000만원</option>
+                        <option value="2,000만원">2,000만원</option>
+                        <option value="3,000만원 이상">3,000만원 이상</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-fixed-submit">
+                    <span>3분 안심 한도조회</span>
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>
