@@ -5,7 +5,7 @@
 ![Node.js](https://img.shields.io/badge/Node.js-v18.x-green?style=flat-square&logo=node.js)
 ![Express](https://img.shields.io/badge/Express-v5.x-black?style=flat-square&logo=express)
 ![EJS](https://img.shields.io/badge/EJS-View_Engine-blue?style=flat-square)
-![MySQL](https://img.shields.io/badge/MySQL-GET__DBDATA-orange?style=flat-square&logo=mysql)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange?style=flat-square&logo=mysql)
 
 ---
 
@@ -19,7 +19,7 @@
    - 8가지 실감 나는 고객 후기를 모바일에서 3.5초마다 부드럽게 자동 슬라이드 (터치 시 일시 정지)
 4. **🖼️ 4단계 스피드 대출 절차 커스텀 이미지 카드**:
    - `pr_1.png` ~ `pr_4.png` 고화질 브랜드 이미지 배경과 다크 오버레이를 통합한 입체적 절차 안내
-5. **🗄️ MySQL `GET_DBDATA` DB 자동 접수 및 퍼스널 로그 연동**:
+5. **🗄️ MySQL DB 자동 접수 및 퍼스널 로그 연동**:
    - 신청 폼 제출 시 비동기(AJAX fetch)로 `loan_applications` 및 `application_logs` 테이블에 데이터 자동 저장
 
 ---
@@ -29,7 +29,7 @@
 * **Backend**: Node.js, Express.js
 * **Frontend**: HTML5, Vanilla CSS3 (Custom CSS Variables & Flexbox/Grid), Vanilla JavaScript (ES6+), EJS View Engine
 * **Database**: MySQL / MariaDB (`mysql2/promise` Connection Pool)
-* **Configuration**: `dotenv` (IP: `175.125.92.74`, Database: `GET_DBDATA`, User: `dbmanager`)
+* **Configuration**: `dotenv` 환경 변수 분리 세팅
 
 ---
 
@@ -65,11 +65,11 @@ cashLoan/
 
 ---
 
-## 🗄️ 데이터베이스 DDL 스키마 (`GET_DBDATA`)
+## 🗄️ 데이터베이스 DDL 스키마 예시
 
 ```sql
-CREATE DATABASE IF NOT EXISTS `GET_DBDATA` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `GET_DBDATA`;
+CREATE DATABASE IF NOT EXISTS `your_db_name` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `your_db_name`;
 
 -- 1. 대출 신청 접수 테이블
 CREATE TABLE IF NOT EXISTS `loan_applications` (
@@ -125,11 +125,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 2. **환경변수 설정 (`.env`)**:
    ```env
-   DB_HOST=175.125.92.74
+   DB_HOST=your_db_host
    DB_PORT=3306
-   DB_USER=dbmanager
-   DB_PASSWORD=your_password
-   DB_NAME=GET_DBDATA
+   DB_USER=your_db_user
+   DB_PASSWORD=your_db_password
+   DB_NAME=your_db_name
    PORT=3000
    ```
 
