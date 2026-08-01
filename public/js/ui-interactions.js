@@ -204,6 +204,28 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoSlide();
     }
 
+    // 1-1. 실시간 이용현황 롤링 티커 (JS 기반 100% 겹침 없는 무이음 롤링)
+    const tickerList = document.querySelector('.f-ticker-list');
+    if (tickerList) {
+        let currentTickerIdx = 0;
+        const totalTickerItems = tickerList.querySelectorAll('li').length; // 5개 (복사본 포함)
+
+        setInterval(() => {
+            currentTickerIdx++;
+            tickerList.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            tickerList.style.transform = `translateY(-${currentTickerIdx * 30}px)`;
+
+            // 4번(마지막) -> 5번(복사본)으로 이동 후 0으로 티 안 나게 원위치 복귀
+            if (currentTickerIdx === totalTickerItems - 1) {
+                setTimeout(() => {
+                    tickerList.style.transition = 'none';
+                    tickerList.style.transform = 'translateY(0)';
+                    currentTickerIdx = 0;
+                }, 400);
+            }
+        }, 2800);
+    }
+
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
     if (revealElements.length > 0) {
         const revealObserver = new IntersectionObserver((entries) => {

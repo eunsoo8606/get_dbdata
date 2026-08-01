@@ -1048,10 +1048,10 @@ ul {
 }
 
 .f-ticker-list {
-    animation: fTickerRoll 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     margin: 0;
     padding: 0;
     list-style: none;
+    transition: transform 0.4s ease-in-out;
 }
 
 .f-ticker-list li {
