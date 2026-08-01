@@ -1,6 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const dbPool = require('../config/db');
+const { parseRefererSource } = require('../utils/referrer');
+
+// DB 테이블 칼럼 자동 보완 (referer_source 추가)
+async function ensureRefererColumn() {
+    try {
+        await dbPool.query(`ALTER TABLE loan_applications ADD COLUMN referer_source VARCHAR(50) DEFAULT '직접입력' AFTER loan_type`);
+    } catch (e) {
+        // 이미 컬럼이 존재할 경우 무시
+    }
+}
+ensureRefererColumn();
 
 // 메모리 임시 저장소 (DB 미연결 시 백업용)
 const memoryApplications = [];
@@ -11,7 +22,7 @@ const memoryApplications = [];
  */
 router.post(['/apply', '/api/apply'], async (req, res) => {
     try {
-        const { userName, userPhone, userAmount, loanType, agreeChk } = req.body;
+        const { userName, userPhone, userAmount, loanType, agreeChk, refererSource } = req.body;
 
         // 필수 항목 검증
         if (!userName || !userPhone) {
@@ -21,7 +32,8 @@ router.post(['/apply', '/api/apply'], async (req, res) => {
             });
         }
 
-        // 연락처 숫자만 추출
+        // 유입 경로 판별 (인스타그램, 페이스북, 네이버, 다음, 구글, 빙, 직접입력)
+        const sourceStr = refererSource || parseRefererSource(req);
         const cleanPhone = userPhone.replace(/[^0-9]/g, '');
         const amountStr = userAmount || '미지정';
         const typeStr = loanType || '일반대출';
@@ -34,13 +46,13 @@ router.post(['/apply', '/api/apply'], async (req, res) => {
             // 1. loan_applications 테이블에 DB 저장
             const [result] = await dbPool.query(
                 `INSERT INTO loan_applications 
-                (applicant_name, applicant_phone, desired_amount, loan_type, agreed_privacy, status, ip_address, user_agent) 
-                VALUES (?, ?, ?, ?, ?, 'PENDING', ?, ?)`,
-                [userName, cleanPhone, amountStr, typeStr, agreeChk ? 1 : 0, clientIp, userAgent]
+                (applicant_name, applicant_phone, desired_amount, loan_type, referer_source, agreed_privacy, status, ip_address, user_agent) 
+                VALUES (?, ?, ?, ?, ?, ?, 'PENDING', ?, ?)`,
+                [userName, cleanPhone, amountStr, typeStr, sourceStr, agreeChk ? 1 : 0, clientIp, userAgent]
             );
             insertId = result.insertId;
 
-            console.log(`🎉 [DB 데이터 삽입 성공!] 테이블: GET_DBDATA.loan_applications | ID: ${insertId} | 성함: ${userName} | 연락처: ${cleanPhone}`);
+            console.log(`🎉 [DB 데이터 삽입 성공!] 테이블: GET_DBDATA.loan_applications | ID: ${insertId} | 성함: ${userName} | 유입경로: ${sourceStr}`);
 
         } catch (dbErr) {
             console.error('❌ [DB 데이터 삽입 실패! - DB 권한 거부 상태]:', dbErr.message);

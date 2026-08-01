@@ -164,6 +164,7 @@
                         <th>신청자 성함</th>
                         <th>연락처</th>
                         <th>희망 금액</th>
+                        <th>유입 경로</th>
                         <th>대출 유형</th>
                         <th>진행 상태</th>
                         <th>상담 메모</th>
@@ -173,16 +174,65 @@
                 </thead>
                 <tbody id="appTableBody">
                     <tr>
-                        <td colspan="9" style="text-align: center; padding: 40px; color: #94A3B8;">데이터를 불러오는 중입니다...</td>
+                        <td colspan="10" style="text-align: center; padding: 40px; color: #94A3B8;">데이터를 불러오는 중입니다...</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
+        <!-- 유입 경로 & 시간대별 몰림 분석 센터 -->
+        <div style="margin-top: 40px;">
+            <h2 style="font-size: 1.3rem; margin-bottom: 20px; font-weight: 800;"><i class="bi bi-graph-up-arrow text-naver-green"></i> 유입 경로 & 시간대별 몰림 분석 센터</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+                
+                <!-- 7대 유입 채널 카운터 & 비율 -->
+                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px;">
+                    <h3 style="font-size: 1.05rem; margin-bottom: 16px; color: #E2E8F0;"><i class="bi bi-compass"></i> 유입 경로별 분포 (인스타/페북/네이버/다음/구글/빙/직접)</h3>
+                    <div id="channelProgressList" style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- JS 렌더링 -->
+                    </div>
+                </div>
+
+                <!-- 24시간 타임라인 몰림 피크 분석 -->
+                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px;">
+                    <h3 style="font-size: 1.05rem; margin-bottom: 16px; color: #E2E8F0;"><i class="bi bi-clock-history"></i> 24시간 시간대별 신청 몰림 현황 (Peak Time)</h3>
+                    <div style="height: 220px; position: relative;">
+                        <canvas id="hourlyChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <!-- 일별 접수 추이 -->
+                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px;">
+                    <h3 style="font-size: 1.05rem; margin-bottom: 16px; color: #E2E8F0;"><i class="bi bi-calendar-range"></i> 최근 7일 일별 접수 추이</h3>
+                    <div style="height: 200px; position: relative;">
+                        <canvas id="dailyChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- 월별 접수 추이 -->
+                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 24px;">
+                    <h3 style="font-size: 1.05rem; margin-bottom: 16px; color: #E2E8F0;"><i class="bi bi-bar-chart-line-fill"></i> 월별 누적 접수 추이</h3>
+                    <div style="height: 200px; position: relative;">
+                        <canvas id="monthlyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
         const token = localStorage.getItem('admin_token');
+        let hourlyChartInstance = null;
+        let dailyChartInstance = null;
+        let monthlyChartInstance = null;
 
         // 통계 지표 불러오기
         async function loadStats() {
@@ -214,18 +264,20 @@
                 const tbody = document.getElementById('appTableBody');
 
                 if (!data.success || data.data.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; padding: 40px; color: #94A3B8;">접수된 대출 신청건이 없습니다.</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="10" style="text-align: center; padding: 40px; color: #94A3B8;">접수된 대출 신청건이 없습니다.</td></tr>`;
                     return;
                 }
 
                 tbody.innerHTML = data.data.map(item => {
                     const dateStr = new Date(item.created_at).toLocaleString('ko-KR');
+                    const refSource = item.referer_source || '직접입력';
                     return `
                         <tr>
                             <td>#${item.id}</td>
                             <td><strong>${item.applicant_name}</strong></td>
                             <td>${item.applicant_phone}</td>
                             <td><strong style="color:#34D399">${item.desired_amount}</strong></td>
+                            <td><span style="background:rgba(255,255,255,0.08); padding:3px 8px; border-radius:4px; font-size:0.8rem;">${refSource}</span></td>
                             <td>${item.loan_type || '일반대출'}</td>
                             <td>
                                 <select class="sel-filter" style="padding:4px 8px; font-size:0.8rem;" onchange="updateStatus(${item.id}, this.value)">
@@ -236,7 +288,7 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="text" value="${item.admin_memo || ''}" placeholder="메모 입력" class="inp-search" style="width:140px; padding:4px 8px; font-size:0.8rem;" onchange="updateMemo(${item.id}, '${item.status}', this.value)">
+                                <input type="text" value="${item.admin_memo || ''}" placeholder="메모 입력" class="inp-search" style="width:130px; padding:4px 8px; font-size:0.8rem;" onchange="updateMemo(${item.id}, '${item.status}', this.value)">
                             </td>
                             <td><span style="font-size:0.82rem; color:#94A3B8;">${dateStr}</span></td>
                             <td>
@@ -245,6 +297,140 @@
                         </tr>
                     `;
                 }).join('');
+
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        // 유입 경로 분석 & 시간대별 몰림 리포트 렌더링
+        async function loadAnalytics() {
+            try {
+                const res = await fetch('/admin/api/analytics', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+                if (!data.success) return;
+
+                // 1. 유입 경로 7대 채널 프로그래스 바
+                const chStats = data.channelStats || {};
+                const totalCount = Object.values(chStats).reduce((a, b) => a + b, 0) || 1;
+                const container = document.getElementById('channelProgressList');
+                
+                const channelColors = {
+                    '인스타그램': '#E1306C',
+                    '페이스북': '#1877F2',
+                    '네이버': '#03C75A',
+                    '다음': '#FFCD00',
+                    '구글': '#4285F4',
+                    '빙': '#008373',
+                    '직접입력': '#94A3B8'
+                };
+
+                container.innerHTML = Object.keys(chStats).map(ch => {
+                    const cnt = chStats[ch] || 0;
+                    const pct = ((cnt / totalCount) * 100).toFixed(1);
+                    const color = channelColors[ch] || '#03C75A';
+
+                    return `
+                        <div>
+                            <div style="display:flex; justify-shadow:space-between; justify-content:space-between; font-size:0.85rem; margin-bottom:4px;">
+                                <span><strong style="color:${color}">${ch}</strong></span>
+                                <span>${cnt}건 (${pct}%)</span>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.08); height:8px; border-radius:4px; overflow:hidden;">
+                                <div style="width:${pct}%; background:${color}; height:100%; transition:width 0.5s ease;"></div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                // 2. 24시간 시간대별 몰림 차트 (Hour Peak Bar)
+                const hourlyCtx = document.getElementById('hourlyChart').getContext('2d');
+                if (hourlyChartInstance) hourlyChartInstance.destroy();
+
+                const hoursLabels = Array.from({length: 24}, (_, i) => `${i}시`);
+                hourlyChartInstance = new Chart(hourlyCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: hoursLabels,
+                        datasets: [{
+                            label: '신청 건수',
+                            data: data.hourlyStats || [],
+                            backgroundColor: '#03C75A',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { ticks: { color: '#94A3B8', fontSize: 10 }, grid: { display: false } },
+                            y: { ticks: { color: '#94A3B8', precision: 0 }, grid: { color: 'rgba(255,255,255,0.06)' } }
+                        }
+                    }
+                });
+
+                // 3. 일별 접수 추이 차트 (Line Chart)
+                const dailyCtx = document.getElementById('dailyChart').getContext('2d');
+                if (dailyChartInstance) dailyChartInstance.destroy();
+
+                const dLabels = (data.dailyStats || []).map(d => d.dt);
+                const dData = (data.dailyStats || []).map(d => d.cnt);
+
+                dailyChartInstance = new Chart(dailyCtx, {
+                    type: 'line',
+                    data: {
+                        labels: dLabels.length > 0 ? dLabels : ['오늘'],
+                        datasets: [{
+                            label: '일별 신청건',
+                            data: dData.length > 0 ? dData : [totalCount],
+                            borderColor: '#38BDF8',
+                            backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { ticks: { color: '#94A3B8' }, grid: { display: false } },
+                            y: { ticks: { color: '#94A3B8', precision: 0 }, grid: { color: 'rgba(255,255,255,0.06)' } }
+                        }
+                    }
+                });
+
+                // 4. 월별 접수 추이 차트 (Bar Chart)
+                const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
+                if (monthlyChartInstance) monthlyChartInstance.destroy();
+
+                const mLabels = (data.monthlyStats || []).map(m => m.ym);
+                const mData = (data.monthlyStats || []).map(m => m.cnt);
+
+                monthlyChartInstance = new Chart(monthlyCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: mLabels.length > 0 ? mLabels : ['이번 달'],
+                        datasets: [{
+                            label: '월별 신청건',
+                            data: mData.length > 0 ? mData : [totalCount],
+                            backgroundColor: '#A855F7',
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { ticks: { color: '#94A3B8' }, grid: { display: false } },
+                            y: { ticks: { color: '#94A3B8', precision: 0 }, grid: { color: 'rgba(255,255,255,0.06)' } }
+                        }
+                    }
+                });
 
             } catch (err) {
                 console.error(err);
@@ -265,6 +451,7 @@
                 const data = await res.json();
                 if (data.success) {
                     loadStats();
+                    loadAnalytics();
                 }
             } catch (err) { alert('상태 변경 실패'); }
         }
@@ -295,6 +482,7 @@
                 if (data.success) {
                     loadStats();
                     loadApplications();
+                    loadAnalytics();
                 }
             } catch (err) { alert('삭제 실패'); }
         }
@@ -309,6 +497,7 @@
         // 초기 실행
         loadStats();
         loadApplications();
+        loadAnalytics();
     </script>
 </body>
 </html>

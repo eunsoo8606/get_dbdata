@@ -123,6 +123,82 @@ router.get('/api/stats', verifyAdminToken, async (req, res) => {
 });
 
 /**
+ * GET /admin/api/analytics - 유입 경로(인스타/페북/네이버/다음/구글/빙/직접입력), 시간대별 몰림, 일별/월별 분석 API
+ */
+router.get('/api/analytics', verifyAdminToken, async (req, res) => {
+    try {
+        // 1. 유입 채널별 집계 (인스타그램, 페이스북, 네이버, 다음, 구글, 빙, 직접입력)
+        const channels = ['인스타그램', '페이스북', '네이버', '다음', '구글', '빙', '직접입력'];
+        let channelStats = {};
+        channels.forEach(ch => channelStats[ch] = 0);
+
+        try {
+            const [cRows] = await dbPool.query(
+                `SELECT COALESCE(referer_source, '직접입력') as source, COUNT(*) as cnt 
+                 FROM loan_applications 
+                 GROUP BY referer_source`
+            );
+            cRows.forEach(r => {
+                const src = r.source || '직접입력';
+                channelStats[src] = (channelStats[src] || 0) + parseInt(r.cnt, 10);
+            });
+        } catch (e) { console.warn(e.message); }
+
+        // 2. 시간대별 몰림 분석 (00시 ~ 23시)
+        let hourlyStats = Array(24).fill(0);
+        try {
+            const [hRows] = await dbPool.query(
+                `SELECT HOUR(created_at) as hr, COUNT(*) as cnt 
+                 FROM loan_applications 
+                 GROUP BY HOUR(created_at)`
+            );
+            hRows.forEach(r => {
+                if (r.hr !== null && r.hr >= 0 && r.hr < 24) {
+                    hourlyStats[r.hr] = parseInt(r.cnt, 10);
+                }
+            });
+        } catch (e) { console.warn(e.message); }
+
+        // 3. 최근 7일 일별 접수 추이
+        let dailyStats = [];
+        try {
+            const [dRows] = await dbPool.query(
+                `SELECT DATE_FORMAT(created_at, '%Y-%m-%d') as dt, COUNT(*) as cnt 
+                 FROM loan_applications 
+                 WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) 
+                 GROUP BY DATE_FORMAT(created_at, '%Y-%m-%d') 
+                 ORDER BY dt ASC`
+            );
+            dailyStats = dRows;
+        } catch (e) { console.warn(e.message); }
+
+        // 4. 최근 12개월 월별 접수 추이
+        let monthlyStats = [];
+        try {
+            const [mRows] = await dbPool.query(
+                `SELECT DATE_FORMAT(created_at, '%Y-%m') as ym, COUNT(*) as cnt 
+                 FROM loan_applications 
+                 GROUP BY DATE_FORMAT(created_at, '%Y-%m') 
+                 ORDER BY ym ASC LIMIT 12`
+            );
+            monthlyStats = mRows;
+        } catch (e) { console.warn(e.message); }
+
+        res.json({
+            success: true,
+            channelStats,
+            hourlyStats,
+            dailyStats,
+            monthlyStats
+        });
+
+    } catch (err) {
+        console.error('Analytics Error:', err);
+        res.status(500).json({ success: false, message: '분석 데이터 조회 실패' });
+    }
+});
+
+/**
  * GET /admin/api/applications - 대출 신청건 리스트 (JWT 인증 필요)
  */
 router.get('/api/applications', verifyAdminToken, async (req, res) => {
