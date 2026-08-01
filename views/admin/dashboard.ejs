@@ -84,12 +84,51 @@
         .st-APPROVED { background: rgba(16, 185, 129, 0.2); color: #34D399; }
         .st-REJECTED { background: rgba(239, 68, 68, 0.2); color: #F87171; }
 
-        .btn-act { padding: 5px 10px; border-radius: 6px; border: none; cursor: pointer; font-size: 0.8rem; font-weight: 700; }
-        .btn-del { background: rgba(239, 68, 68, 0.2); color: #F87171; }
-        .btn-del:hover { background: #EF4444; color: #FFF; }
+        /* Desktop / Mobile Visibility Switch */
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
+
+        /* Mobile Card View Styles */
+        .mobile-app-list { display: flex; flex-direction: column; gap: 14px; }
+        .m-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .m-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .m-card-id { font-size: 0.82rem; color: #94A3B8; font-weight: 700; }
+        .m-card-name { font-size: 1.05rem; font-weight: 800; color: #FFF; }
+        .m-card-phone { font-size: 0.9rem; color: #CBD5E1; margin-left: 6px; }
+
+        .m-card-body { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+        .m-row { display: flex; align-items: center; justify-content: space-between; font-size: 0.88rem; }
+        .m-label { color: #94A3B8; }
+        .m-val { color: #FFF; font-weight: 600; }
+        .m-val.highlight { color: #34D399; font-weight: 800; font-size: 1.05rem; }
+
+        .m-card-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: rgba(255,255,255,0.03);
+            padding: 10px;
+            border-radius: 8px;
+        }
 
         /* Mobile Optimization Responsive Styles */
         @media (max-width: 768px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: flex !important; }
+
             .header-bar { padding: 12px 16px; }
             .h-brand { font-size: 1.1rem; }
             .container { padding: 16px 12px; }
@@ -101,10 +140,6 @@
             .filter-bar { flex-direction: column; align-items: stretch; gap: 10px; padding: 12px; }
             .f-group { flex-direction: column; align-items: stretch; width: 100%; }
             .inp-search, .sel-filter { width: 100% !important; }
-            
-            .table-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-            table { min-width: 900px; font-size: 0.82rem; }
-            th, td { padding: 10px 8px; }
 
             .analytics-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
         }
@@ -177,8 +212,8 @@
             </div>
         </div>
 
-        <!-- 대출 신청 목록 테이블 -->
-        <div class="table-box">
+        <!-- 대출 신청 목록 테이블 (데스크톱 뷰) -->
+        <div class="table-box desktop-only">
             <table>
                 <thead>
                     <tr>
@@ -200,6 +235,11 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+
+        <!-- 모바일 전용 카드 리스트 뷰 (모바일 최적화 뷰) -->
+        <div class="mobile-app-list mobile-only" id="mobileAppList">
+            <!-- JS 렌더링 -->
         </div>
 
         <!-- 유입 경로 & 시간대별 몰림 분석 센터 -->
@@ -284,12 +324,15 @@
 
                 const data = await res.json();
                 const tbody = document.getElementById('appTableBody');
+                const mobileList = document.getElementById('mobileAppList');
 
                 if (!data.success || data.data.length === 0) {
                     tbody.innerHTML = `<tr><td colspan="10" style="text-align: center; padding: 40px; color: #94A3B8;">접수된 대출 신청건이 없습니다.</td></tr>`;
+                    mobileList.innerHTML = `<div style="text-align: center; padding: 40px; color: #94A3B8; background: var(--card-bg); border-radius: 14px;">접수된 대출 신청건이 없습니다.</div>`;
                     return;
                 }
 
+                // 1. 데스크톱 테이블 렌더링
                 tbody.innerHTML = data.data.map(item => {
                     const dateStr = new Date(item.created_at).toLocaleString('ko-KR');
                     const refSource = item.referer_source || '직접입력';
@@ -317,6 +360,47 @@
                                 <button type="button" class="btn-act btn-del" onclick="deleteApp(${item.id})"><i class="bi bi-trash"></i></button>
                             </td>
                         </tr>
+                    `;
+                }).join('');
+
+                // 2. 모바일 카드 뷰 렌더링 (모바일 스마트폰 최적화 전용)
+                mobileList.innerHTML = data.data.map(item => {
+                    const dateStr = new Date(item.created_at).toLocaleString('ko-KR');
+                    const refSource = item.referer_source || '직접입력';
+                    return `
+                        <div class="m-card">
+                            <div class="m-card-header">
+                                <div>
+                                    <span class="m-card-id">#${item.id}</span>
+                                    <span class="m-card-name">${item.applicant_name}</span>
+                                    <span class="m-card-phone">${item.applicant_phone}</span>
+                                </div>
+                                <button type="button" class="btn-act btn-del" onclick="deleteApp(${item.id})"><i class="bi bi-trash"></i></button>
+                            </div>
+                            <div class="m-card-body">
+                                <div class="m-row">
+                                    <span class="m-label">희망금액</span>
+                                    <span class="m-val highlight">${item.desired_amount}</span>
+                                </div>
+                                <div class="m-row">
+                                    <span class="m-label">대출유형 / 유입경로</span>
+                                    <span class="m-val">${item.loan_type || '일반대출'} <span style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:4px; font-size:0.75rem; margin-left:4px;">${refSource}</span></span>
+                                </div>
+                            </div>
+                            <div class="m-card-footer">
+                                <div class="m-row">
+                                    <span class="m-label">진행상태</span>
+                                    <select class="sel-filter" style="padding:6px 10px; font-size:0.85rem; width:140px;" onchange="updateStatus(${item.id}, this.value)">
+                                        <option value="PENDING" ${item.status === 'PENDING' ? 'selected' : ''}>접수대기</option>
+                                        <option value="CONSULTING" ${item.status === 'CONSULTING' ? 'selected' : ''}>상담중</option>
+                                        <option value="APPROVED" ${item.status === 'APPROVED' ? 'selected' : ''}>승인완료</option>
+                                        <option value="REJECTED" ${item.status === 'REJECTED' ? 'selected' : ''}>부결/거절</option>
+                                    </select>
+                                </div>
+                                <input type="text" value="${item.admin_memo || ''}" placeholder="상담 메모 작성" class="inp-search" style="width:100%; padding:8px 10px; font-size:0.85rem; margin-top:4px;" onchange="updateMemo(${item.id}, '${item.status}', this.value)">
+                                <div style="font-size:0.76rem; color:#94A3B8; text-align:right; margin-top:4px;">${dateStr}</div>
+                            </div>
+                        </div>
                     `;
                 }).join('');
 
