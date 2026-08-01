@@ -6,10 +6,10 @@ const dbPool = require('../config/db');
 const memoryApplications = [];
 
 /**
- * @route   POST /api/apply
- * @desc    대출 3분 안심 한도조회 접수 API
+ * @route   POST /api/apply & POST /apply
+ * @desc    대출 3분 안심 한도조회 DB 저장 API
  */
-router.post('/apply', async (req, res) => {
+router.post(['/apply', '/api/apply'], async (req, res) => {
     try {
         const { userName, userPhone, userAmount, loanType, agreeChk } = req.body;
 

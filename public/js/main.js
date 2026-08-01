@@ -111,11 +111,11 @@ function handleFormSubmit(e) {
     const form = e.target;
     const userName = (form.userName?.value || '').trim();
     const userPhone = (form.userPhone?.value || '').trim();
-    const userAmount = form.userAmount?.value || '';
-    const userJob = form.userJob?.value || '';
+    const userAmount = form.userAmount?.value || '미지정';
+    const agreeChk = form.agreeChk?.checked ? true : false;
 
-    if (!userName || !userPhone || !userAmount) {
-        alert('필수 항목(성함, 연락처, 희망금액)을 입력해 주세요.');
+    if (!userName || !userPhone) {
+        alert('필수 항목(성함, 연락처)을 입력해 주세요.');
         return;
     }
 
@@ -124,19 +124,19 @@ function handleFormSubmit(e) {
         return;
     }
 
-    // Submit via Fetch API
+    // Submit via Fetch API to /api/apply
     fetch('/api/apply', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userName, userPhone, userAmount, userJob })
+        body: JSON.stringify({ userName, userPhone, userAmount, agreeChk })
     })
     .then(res => res.json())
     .then(data => {
         if (data.success) {
-            alert(`✅ ${data.message}`);
+            alert(data.message);
             form.reset();
         } else {
-            alert(`⚠️ ${data.message}`);
+            alert(data.message || '접수 중 오류가 발생했습니다.');
         }
     })
     .catch(err => {

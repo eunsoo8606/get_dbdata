@@ -25,23 +25,4 @@ router.get('/reviews', (req, res) => {
     });
 });
 
-// 상담 신청 API Endpoint
-router.post('/api/apply', (req, res) => {
-    const { userName, userPhone, userAmount, userJob } = req.body;
-
-    if (!userName || !userPhone || !userAmount) {
-        return res.status(400).json({
-            success: false,
-            message: '필수 항목(성함, 연락처, 희망금액)을 모두 입력해 주세요.'
-        });
-    }
-
-    // 성공 응답 (실제 운용 시 DB 저장 또는 텔레그램/알림톡/메일 전송 연동)
-    return res.json({
-        success: true,
-        message: `${userName} 고객님, 3분 안심 한도 조회가 정상 접수되었습니다. 담당 전문 상담원이 빠른 시일 내 연락드리겠습니다.`,
-        data: { userName, userAmount, userJob }
-    });
-});
-
 module.exports = router;

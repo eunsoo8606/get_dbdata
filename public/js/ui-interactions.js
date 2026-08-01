@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
 
         // 4. 대출 신청 폼 AJAX 비동기 DB 전송 연동
-        const applyForms = document.querySelectorAll('form[action="/apply"], #fixedBottomForm, #mainLoanForm');
+        const applyForms = document.querySelectorAll('form[action="/api/apply"], form[action="/apply"], #fixedLoanApplyForm, #fixedBottomForm, #mainLoanForm');
     
         applyForms.forEach(form => {
             form.addEventListener('submit', async (e) => {
