@@ -40,20 +40,24 @@ router.post('/apply', async (req, res) => {
             );
             insertId = result.insertId;
 
-            // 2. application_logs 퍼스널 접수 로그 기록
-            if (insertId) {
-                await dbPool.query(
-                    `INSERT INTO application_logs 
-                    (application_id, log_type, action_user, message, result_status) 
-                    VALUES (?, 'SYSTEM_RECEIVE', 'SYSTEM', ?, 'SUCCESS')`,
-                    [insertId, `신규 대출 접수 [${userName} / ${cleanPhone} / ${amountStr}]`]
-                );
+            // 2. application_logs 퍼스널 접수 로그 기록 (선택)
+            try {
+                if (insertId) {
+                    await dbPool.query(
+                        `INSERT INTO application_logs 
+                        (application_id, log_type, action_user, message, result_status) 
+                        VALUES (?, 'SYSTEM_RECEIVE', 'SYSTEM', ?, 'SUCCESS')`,
+                        [insertId, `신규 대출 접수 [${userName} / ${cleanPhone} / ${amountStr}]`]
+                    );
+                }
+            } catch (logErr) {
+                console.warn('⚠️ application_logs 생략됨 (기본 접수는 저장 완료됨):', logErr.message);
             }
 
-            console.log(`✅ [DB 접수 완료] ID: ${insertId} | ${userName} (${cleanPhone}) - ${amountStr}`);
+            console.log(`🎉 [DB 저장 성공!] GET_DBDATA.loan_applications -> ID: ${insertId} | ${userName} (${cleanPhone})`);
 
         } catch (dbErr) {
-            console.warn('⚠️ DB 저장 시도 중 에러 (메모리 백업 저장):', dbErr.message);
+            console.error('❌ [DB 저장 실패! Access Denied 또는 DB 미연결]:', dbErr.message);
             
             // DB 연결 불가 시 메모리 저장 백업
             const backupItem = {
