@@ -1041,30 +1041,38 @@ ul {
 }
 
 .f-ticker-window {
-    height: 26px;
-    line-height: 26px;
+    height: 30px;
+    line-height: 30px;
     overflow: hidden;
     flex-grow: 1;
 }
 
 .f-ticker-list {
     animation: fTickerRoll 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .f-ticker-list li {
-    height: 26px;
-    line-height: 26px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    height: 30px;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 0.88rem;
+    display: block;
 }
 
 .ft-badge {
+    display: inline-block;
+    vertical-align: middle;
     font-size: 0.72rem;
-    padding: 2px 6px;
+    padding: 2px 7px;
     border-radius: 4px;
     font-weight: 700;
+    line-height: 1.2;
+    margin-right: 6px;
 }
 
 .ft-badge.success {
@@ -1080,6 +1088,7 @@ ul {
 .ft-time {
     color: var(--text-muted);
     font-size: 0.78rem;
+    margin-left: 6px;
 }
 
 @keyframes fTickerRoll {
@@ -1087,16 +1096,16 @@ ul {
         transform: translateY(0);
     }
     22%, 40% {
-        transform: translateY(-26px);
+        transform: translateY(-30px);
     }
     44%, 62% {
-        transform: translateY(-52px);
+        transform: translateY(-60px);
     }
     66%, 84% {
-        transform: translateY(-78px);
+        transform: translateY(-90px);
     }
     88%, 98% {
-        transform: translateY(-104px);
+        transform: translateY(-120px);
     }
     100% {
         transform: translateY(0);

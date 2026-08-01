@@ -270,18 +270,19 @@
     }
     .f-ticker-window {
         font-size: 0.76rem;
-        height: 26px;
-        line-height: 26px;
+        height: 30px;
+        line-height: 30px;
         overflow: hidden;
         flex-grow: 1;
     }
     .f-ticker-list li {
-        height: 26px;
-        line-height: 26px;
+        height: 30px;
+        line-height: 30px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: 0.76rem;
+        display: block;
     }
 
     /* 2. 하단 신청 폼 모바일 스마트 2줄 레이아웃 */
