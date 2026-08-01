@@ -549,7 +549,7 @@ ul {
     height: 85vh;
     min-height: 85vh;
     padding: 115px 0 0;
-    background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.88)), url('/images/main.png') no-repeat center center / cover;
+    background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.88)), url('/images/main.webp') no-repeat center center / cover;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -1593,19 +1593,19 @@ ul {
 }
 
 .process-card-1 {
-    background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.88)), url('/images/pr_1.png') no-repeat center center / cover !important;
+    background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.88)), url('/images/pr_1.webp') no-repeat center center / cover !important;
 }
 
 .process-card-2 {
-    background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.88)), url('/images/pr_2.png') no-repeat center center / cover !important;
+    background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.88)), url('/images/pr_2.webp') no-repeat center center / cover !important;
 }
 
 .process-card-3 {
-    background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.88)), url('/images/pr_3.png') no-repeat center center / cover !important;
+    background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.88)), url('/images/pr_3.webp') no-repeat center center / cover !important;
 }
 
 .process-card-4 {
-    background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.88)), url('/images/pr_4.png') no-repeat center center / cover !important;
+    background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.88)), url('/images/pr_4.webp') no-repeat center center / cover !important;
 }
 
 .process-card:hover {
