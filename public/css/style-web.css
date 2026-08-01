@@ -2196,8 +2196,7 @@ ul {
 }
 
 .reviews-controls {
-    display: flex;
-    gap: 10px;
+    display: none !important;
 }
 
 .review-nav-btn {
