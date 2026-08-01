@@ -214,6 +214,32 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => revealObserver.observe(el));
 });
 
+// 5. 계산기 조건 연동 스무스 스크롤 이동 헬퍼 함수
+function scrollToFormWithData() {
+    const calcAmount = document.getElementById('calcAmountSlider');
+    const fixedAmountSelect = document.querySelector('select[name="userAmount"]');
+    const bottomForm = document.getElementById('fixedBottomForm') || document.getElementById('mainLoanForm') || document.querySelector('.fixed-bottom-bar-wrapper');
+
+    if (calcAmount && fixedAmountSelect) {
+        const val = parseInt(calcAmount.value, 10);
+        let optVal = '100만원 이하';
+
+        if (val <= 100) optVal = '100만원 이하';
+        else if (val <= 300) optVal = '300만원';
+        else if (val <= 500) optVal = '500만원';
+        else if (val <= 1000) optVal = '1,000만원';
+        else if (val <= 2000) optVal = '2,000만원';
+        else optVal = '3,000만원 이상';
+
+        fixedAmountSelect.value = optVal;
+    }
+
+    if (bottomForm) {
+        bottomForm.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+window.scrollToFormWithData = scrollToFormWithData;
+
 // 2. FAQ Accordion Toggle
 function toggleFaq(buttonEl) {
     const itemEl = buttonEl.parentElement;
