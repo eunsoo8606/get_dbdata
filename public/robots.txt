@@ -1,5 +1,20 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
 Disallow: /api/
 
+# Major Search Engine Crawlers Explicit Permission
+User-agent: Yeti
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Daumoa
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap File Location
 Sitemap: https://mamatrading.co.kr/sitemap.xml
