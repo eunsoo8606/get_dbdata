@@ -152,6 +152,10 @@ ul {
     color: #FFF;
 }
 
+.m-break {
+    display: none;
+}
+
 .top-contacts {
     display: flex;
     align-items: center;

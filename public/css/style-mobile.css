@@ -107,6 +107,9 @@
 
     /* Header & Navigation Mobile */
     .top-bar-content { flex-direction: column; gap: 6px; text-align: center; font-size: 0.75rem; }
+    .registration-badge { flex-wrap: wrap; justify-content: center; line-height: 1.35; text-align: center; }
+    .reg-text { display: inline-block; text-align: center; }
+    .m-break { display: block !important; }
     .top-contacts { display: none; }
     .gnb { display: none; }
     .btn-kakao-top { display: none; }
