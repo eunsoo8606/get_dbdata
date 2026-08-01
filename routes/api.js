@@ -52,6 +52,25 @@ router.post(['/apply', '/api/apply'], async (req, res) => {
             );
             insertId = result.insertId;
 
+            // 2. application_logs 퍼스널 접수 로그 기록 (localhost/127.0.0.1 접속 시 제외)
+            const isLocalhost = clientIp.includes('127.0.0.1') || clientIp.includes('::1') || (req.headers.host && req.headers.host.includes('localhost'));
+
+            if (!isLocalhost && insertId) {
+                try {
+                    await dbPool.query(
+                        `INSERT INTO application_logs 
+                        (application_id, log_type, action_user, message, result_status) 
+                        VALUES (?, 'SYSTEM_RECEIVE', 'SYSTEM', ?, 'SUCCESS')`,
+                        [insertId, `신규 대출 접수 [${userName} / ${cleanPhone} / ${amountStr}]`]
+                    );
+                    console.log(`📝 [퍼스널 로그 기록 완료] Application ID: ${insertId}`);
+                } catch (logErr) {
+                    console.warn('⚠️ application_logs 생략됨:', logErr.message);
+                }
+            } else if (isLocalhost) {
+                console.log(`ℹ️ [Localhost 테스트 접속] 퍼스널 로그(application_logs) 생성이 스킵되었습니다.`);
+            }
+
             console.log(`🎉 [DB 데이터 삽입 성공!] 테이블: GET_DBDATA.loan_applications | ID: ${insertId} | 성함: ${userName} | 유입경로: ${sourceStr}`);
 
         } catch (dbErr) {
