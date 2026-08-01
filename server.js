@@ -34,6 +34,7 @@ const apiRoutes = require('./routes/api');
 const adminRoutes = require('./routes/admin');
 
 // Routes Middleware
+app.get('/console', (req, res) => res.redirect('/admin/dashboard'));
 app.use('/', indexRoutes);
 app.use('/products', productRoutes);
 app.use('/api', apiRoutes);
