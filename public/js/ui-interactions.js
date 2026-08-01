@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
             leftText.style.transform = `translateX(${leftOffset}%)`;
             leftText.style.opacity = `${0.1 + (easeProgress * 0.9)}`;
 
-            // 우측 'LOW RATE': 데스크톱 +5%, 모바일 0% (중앙 안착)
-            const targetRight = isMobile ? 0 : 5;
+            // 우측 'LOW RATE': 데스크톱 +1%, 모바일 0% (중앙 안착)
+            const targetRight = isMobile ? 0 : 1;
             const rightOffset = 100 - (easeProgress * (100 - targetRight));
             rightText.style.transform = `translateX(${rightOffset}%)`;
             rightText.style.opacity = `${0.1 + (easeProgress * 0.9)}`;
