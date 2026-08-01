@@ -172,6 +172,7 @@
     .process-section { padding: 60px 0; }
     .process-grid { grid-template-columns: 1fr; gap: 16px; }
     .process-card { padding: 24px 18px; }
+    .process-card p { color: #F1F5F9 !important; font-size: 0.9rem !important; text-shadow: 0 1px 3px rgba(0,0,0,0.85); }
     .p-step-num { font-size: 1.8rem; margin-bottom: 6px; }
 
     /* Products Mobile */
