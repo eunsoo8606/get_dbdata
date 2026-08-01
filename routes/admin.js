@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const XLSX = require('xlsx');
 const dbPool = require('../config/db');
 const { generateToken, verifyAdminToken } = require('../middlewares/auth');
 
@@ -242,6 +243,89 @@ router.patch('/api/applications/:id/status', verifyAdminToken, async (req, res) 
         res.json({ success: true, message: '신청건 상태가 변경되었습니다.' });
     } catch (err) {
         res.status(500).json({ success: false, message: '상태 변경 실패' });
+    }
+});
+
+/**
+ * GET /admin/api/export-excel - 대출 신청 접수 내역 엑셀 파일(.xlsx) 다운로드 API
+ */
+router.get('/api/export-excel', verifyAdminToken, async (req, res) => {
+    try {
+        const { status, keyword } = req.query;
+        let query = `SELECT * FROM loan_applications WHERE 1=1`;
+        let params = [];
+
+        if (status && status !== 'ALL') {
+            query += ` AND status = ?`;
+            params.push(status);
+        }
+
+        if (keyword) {
+            query += ` AND (applicant_name LIKE ? OR applicant_phone LIKE ?)`;
+            params.push(`%${keyword}%`, `%${keyword}%`);
+        }
+
+        query += ` ORDER BY id DESC`;
+
+        const [rows] = await dbPool.query(query, params);
+
+        // 엑셀 데이터 매핑 (한글 헤더)
+        const excelData = rows.map((item, idx) => {
+            const dateStr = new Date(item.created_at).toLocaleString('ko-KR');
+            let statusKor = '접수대기';
+            if (item.status === 'CONSULTING') statusKor = '상담중';
+            else if (item.status === 'APPROVED') statusKor = '승인완료';
+            else if (item.status === 'REJECTED') statusKor = '부결/거절';
+
+            return {
+                '번호': idx + 1,
+                '접수 ID': item.id,
+                '신청자 성함': item.applicant_name,
+                '연락처': item.applicant_phone,
+                '희망 금액': item.desired_amount,
+                '대출 유형': item.loan_type || '일반대출',
+                '유입 경로': item.referer_source || '직접입력',
+                '진행 상태': statusKor,
+                '상담 메모': item.admin_memo || '',
+                '접수 일시': dateStr,
+                '접수 IP': item.ip_address || ''
+            };
+        });
+
+        // SheetJS 워크북 생성
+        const worksheet = XLSX.utils.json_to_sheet(excelData);
+        
+        // 컬럼 너비 자동으로 넓히기
+        worksheet['!cols'] = [
+            { wch: 6 },  // 번호
+            { wch: 10 }, // 접수 ID
+            { wch: 14 }, // 성함
+            { wch: 16 }, // 연락처
+            { wch: 14 }, // 희망금액
+            { wch: 14 }, // 대출유형
+            { wch: 14 }, // 유입경로
+            { wch: 12 }, // 진행상태
+            { wch: 24 }, // 메모
+            { wch: 22 }, // 일시
+            { wch: 16 }  // IP
+        ];
+
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, '대출신청접수내역');
+
+        // 바이너리 엑셀 버퍼 생성
+        const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
+
+        const todayStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        const filename = encodeURIComponent(`마마트레이딩_대출신청내역_${todayStr}.xlsx`);
+
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.setHeader('Content-Disposition', `attachment; filename*=UTF-8''${filename}`);
+        res.send(excelBuffer);
+
+    } catch (err) {
+        console.error('Excel Export Error:', err);
+        res.status(500).json({ success: false, message: '엑셀 파일 생성 실패' });
     }
 });
 

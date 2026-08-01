@@ -171,7 +171,10 @@
                 <input type="text" id="searchInput" class="inp-search" placeholder="성함 또는 연락처 검색" onkeyup="if(event.key==='Enter') loadApplications()">
                 <button type="button" class="btn-logout" onclick="loadApplications()"><i class="bi bi-search"></i> 검색</button>
             </div>
-            <button type="button" class="btn-logout" onclick="loadApplications()"><i class="bi bi-arrow-clockwise"></i> 새로고침</button>
+            <div style="display:flex; gap:8px;">
+                <button type="button" class="btn-logout" style="background:#03C75A; color:#FFF; font-weight:800;" onclick="downloadExcel()"><i class="bi bi-file-earmark-excel-fill"></i> 엑셀 다운로드</button>
+                <button type="button" class="btn-logout" onclick="loadApplications()"><i class="bi bi-arrow-clockwise"></i> 새로고침</button>
+            </div>
         </div>
 
         <!-- 대출 신청 목록 테이블 -->
@@ -504,6 +507,40 @@
                     loadAnalytics();
                 }
             } catch (err) { alert('삭제 실패'); }
+        }
+
+        // 엑셀 파일 다운로드
+        async function downloadExcel() {
+            try {
+                const status = document.getElementById('statusFilter').value;
+                const keyword = document.getElementById('searchInput').value.trim();
+                
+                const url = `/admin/api/export-excel?status=${status}&keyword=${encodeURIComponent(keyword)}`;
+                
+                const res = await fetch(url, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!res.ok) {
+                    alert('엑셀 다운로드 권한이 없거나 실패했습니다.');
+                    return;
+                }
+
+                const blob = await res.blob();
+                const downloadUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = downloadUrl;
+                const todayStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+                a.download = `마마트레이딩_대출신청내역_${todayStr}.xlsx`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(downloadUrl);
+
+            } catch (err) {
+                console.error(err);
+                alert('엑셀 파일 다운로드 중 에러가 발생했습니다.');
+            }
         }
 
         // 로그아웃
