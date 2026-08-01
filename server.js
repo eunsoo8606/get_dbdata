@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,9 +10,10 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Body Parser Middleware
+// Body Parser & Cookie Parser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 // Static Folder Setup (public)
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,11 +31,13 @@ app.get('/sitemap.xml', (req, res) => {
 const indexRoutes = require('./routes/index');
 const productRoutes = require('./routes/products');
 const apiRoutes = require('./routes/api');
+const adminRoutes = require('./routes/admin');
 
 // Routes Middleware
 app.use('/', indexRoutes);
 app.use('/products', productRoutes);
 app.use('/api', apiRoutes);
+app.use('/admin', adminRoutes);
 
 // 404 Handler
 app.use((req, res) => {
