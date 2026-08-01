@@ -40,26 +40,12 @@ router.post('/apply', async (req, res) => {
             );
             insertId = result.insertId;
 
-            // 2. application_logs 퍼스널 접수 로그 기록 (선택)
-            try {
-                if (insertId) {
-                    await dbPool.query(
-                        `INSERT INTO application_logs 
-                        (application_id, log_type, action_user, message, result_status) 
-                        VALUES (?, 'SYSTEM_RECEIVE', 'SYSTEM', ?, 'SUCCESS')`,
-                        [insertId, `신규 대출 접수 [${userName} / ${cleanPhone} / ${amountStr}]`]
-                    );
-                }
-            } catch (logErr) {
-                console.warn('⚠️ application_logs 생략됨 (기본 접수는 저장 완료됨):', logErr.message);
-            }
-
-            console.log(`🎉 [DB 저장 성공!] GET_DBDATA.loan_applications -> ID: ${insertId} | ${userName} (${cleanPhone})`);
+            console.log(`🎉 [DB 데이터 삽입 성공!] 테이블: GET_DBDATA.loan_applications | ID: ${insertId} | 성함: ${userName} | 연락처: ${cleanPhone}`);
 
         } catch (dbErr) {
-            console.error('❌ [DB 저장 실패! Access Denied 또는 DB 미연결]:', dbErr.message);
+            console.error('❌ [DB 데이터 삽입 실패! - DB 권한 거부 상태]:', dbErr.message);
             
-            // DB 연결 불가 시 메모리 저장 백업
+            // DB 연결 불가 시 임시 메모리 저장 백업
             const backupItem = {
                 id: Date.now(),
                 userName,

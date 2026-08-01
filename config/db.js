@@ -18,11 +18,12 @@ const pool = mysql.createPool({
 async function testConnection() {
     try {
         const connection = await pool.getConnection();
-        console.log('✅ MySQL DB (GET_DBDATA) 175.125.92.74 연결 성공!');
+        console.log('🎉 [DB 연결 성공!] MySQL GET_DBDATA (175.125.92.74) 커넥션이 완벽하게 연결되었습니다.');
         connection.release();
         return true;
     } catch (error) {
-        console.warn('⚠️ MySQL DB 연결 대기 중 (DB 미가동 시 메모리 저장 모드로 동작합니다):', error.message);
+        console.error('❌ [DB 연결 실패 - Access Denied!]: MySQL에 "dbmanager"@"%" (비밀번호: tkfkd8606!) 권한을 부여해 주세요.');
+        console.error('👉 에러 내용:', error.message);
         return false;
     }
 }
