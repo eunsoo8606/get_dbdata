@@ -1052,7 +1052,8 @@ ul {
 }
 
 .f-ticker-list li {
-    height: 24px;
+    height: 26px;
+    line-height: 26px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -1082,27 +1083,21 @@ ul {
 }
 
 @keyframes fTickerRoll {
-
-    0%,
-    20% {
+    0%, 18% {
         transform: translateY(0);
     }
-
-    25%,
-    45% {
-        transform: translateY(-24px);
+    22%, 40% {
+        transform: translateY(-26px);
     }
-
-    50%,
-    70% {
-        transform: translateY(-48px);
+    44%, 62% {
+        transform: translateY(-52px);
     }
-
-    75%,
-    95% {
-        transform: translateY(-72px);
+    66%, 84% {
+        transform: translateY(-78px);
     }
-
+    88%, 98% {
+        transform: translateY(-104px);
+    }
     100% {
         transform: translateY(0);
     }
