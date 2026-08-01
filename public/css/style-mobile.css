@@ -462,4 +462,9 @@
     .terms-grid { grid-template-columns: 1fr; gap: 12px; }
     .t-item.full-width { grid-column: span 1; }
     .footer-company-info { font-size: 0.8rem; }
+
+    /* 모바일 이용 후기 섹션 화살표 컨트롤 숨김 */
+    .reviews-controls {
+        display: none !important;
+    }
 }
