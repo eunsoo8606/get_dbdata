@@ -109,10 +109,10 @@ function handleFormSubmit(e) {
     e.preventDefault();
 
     const form = e.target;
-    const userName = form.userName.value.trim();
-    const userPhone = form.userPhone.value.trim();
-    const userAmount = form.userAmount.value;
-    const userJob = form.userJob.value;
+    const userName = (form.userName?.value || '').trim();
+    const userPhone = (form.userPhone?.value || '').trim();
+    const userAmount = form.userAmount?.value || '';
+    const userJob = form.userJob?.value || '';
 
     if (!userName || !userPhone || !userAmount) {
         alert('필수 항목(성함, 연락처, 희망금액)을 입력해 주세요.');

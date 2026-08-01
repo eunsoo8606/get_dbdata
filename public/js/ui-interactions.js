@@ -203,15 +203,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // 슬라이드 자동 구동 시작
         startAutoSlide();
     }
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-revealed');
-            }
-        });
-    }, { threshold: 0.1 });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    if (revealElements.length > 0) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-revealed');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    }
 });
 
 // 5. 계산기 조건 연동 스무스 스크롤 이동 헬퍼 함수
