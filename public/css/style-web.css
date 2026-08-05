@@ -1,5 +1,5 @@
 /* ==========================================================================
-   마마트레이딩 (MAMA TRADING) - Naver Green Fintech Theme (Desktop / Web Style)
+   든든한대부중개 (DEUNDEUN LOAN) - Naver Green Fintech Theme (Desktop / Web Style)
    ========================================================================== */
 
 :root {
@@ -2450,4 +2450,397 @@ ul {
     font-size: 0.8rem;
     color: var(--text-muted);
     margin-top: 14px;
+}
+
+/* ==========================================================================
+   Growth Hack CRO 개선 요소 스타일 (2026-08-05 추가)
+   ========================================================================== */
+
+/* Hero CTA Group (전환율 극대화를 위한 Above-the-Fold 직접 행동 유도) */
+.hero-cta-group {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--naver-green);
+    color: #FFF;
+    font-size: 1.25rem;
+    font-weight: 800;
+    padding: 18px 44px;
+    border-radius: 60px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(3, 199, 90, 0.45);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: heroBtnPulse 2.5s infinite;
+    font-family: inherit;
+}
+
+.btn-hero-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 40px rgba(3, 199, 90, 0.6);
+    background: var(--naver-green-hover);
+}
+
+@keyframes heroBtnPulse {
+    0%, 100% { box-shadow: 0 8px 30px rgba(3, 199, 90, 0.45); }
+    50% { box-shadow: 0 8px 30px rgba(3, 199, 90, 0.45), 0 0 0 14px rgba(3, 199, 90, 0.12); }
+}
+
+.hero-micro-copy {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+/* Hero Urgency Chip (손실 회피 심리 활성화) */
+.hero-urgency-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(239, 68, 68, 0.15);
+    backdrop-filter: blur(8px);
+    color: #FCA5A5;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    margin-top: 24px;
+}
+
+.urgency-count {
+    color: #F87171;
+    font-size: 1.1rem;
+    animation: urgencyBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes urgencyBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* Social Proof Counter Section (숫자 기반 사회적 증명) */
+.social-proof-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #064E3B 0%, #047857 100%);
+}
+
+.proof-counter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    text-align: center;
+}
+
+.counter-item {
+    color: #FFF;
+}
+
+.counter-num {
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: #34D399;
+    display: inline;
+    letter-spacing: -1px;
+    font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+}
+
+.counter-suffix {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #34D399;
+    margin-left: 2px;
+}
+
+.counter-item p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+/* Main Application Form Section (CRO 핵심 전환 요소) */
+.main-apply-section {
+    padding: 80px 0;
+    background: linear-gradient(180deg, #F0FDF4 0%, var(--bg-main) 100%);
+}
+
+.main-form-card {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #FFF;
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    border: 2px solid var(--border-green);
+    box-shadow: 0 20px 50px rgba(3, 199, 90, 0.12);
+}
+
+.form-trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.form-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--naver-green-dark);
+    background: var(--naver-green-light);
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+.main-form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.form-field label i {
+    color: var(--naver-green);
+    margin-right: 4px;
+}
+
+.form-field input[type="text"],
+.form-field input[type="tel"],
+.form-field select {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: var(--transition-fast);
+    background: #FAFAFA;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+    border-color: var(--naver-green);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(3, 199, 90, 0.12);
+    background: #FFF;
+}
+
+.form-agree-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.form-agree-field label {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.form-agree-field .btn-terms-pop {
+    font-size: 0.8rem;
+    color: var(--naver-green);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.btn-main-submit {
+    width: 100%;
+    padding: 18px;
+    background: var(--naver-green);
+    color: #FFF;
+    font-size: 1.15rem;
+    font-weight: 800;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 6px 20px rgba(3, 199, 90, 0.35);
+    transition: all 0.3s ease;
+    animation: heroBtnPulse 2.5s infinite;
+    font-family: inherit;
+}
+
+.btn-main-submit:hover {
+    background: var(--naver-green-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(3, 199, 90, 0.45);
+}
+
+.form-micro-copy {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* Success Modal (피크엔드 법칙 기반 접수 완료 모달) */
+.success-modal-card {
+    max-width: 420px;
+}
+
+.success-header {
+    background: var(--naver-green);
+    color: #FFF;
+}
+
+.success-header h3 {
+    color: #FFF;
+}
+
+.success-header .btn-close-modal {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.success-header .btn-close-modal:hover {
+    color: #FFF;
+}
+
+.success-body {
+    text-align: center;
+    padding: 32px 28px;
+}
+
+.success-icon-area {
+    margin-bottom: 20px;
+}
+
+.success-check-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--naver-green-light);
+    color: var(--naver-green);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    animation: successPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes successPop {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.success-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.success-name-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.success-info-box {
+    background: #F0FDF4;
+    border-radius: var(--radius-sm);
+    padding: 18px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.success-info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.success-info-item i {
+    color: var(--naver-green);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.success-info-item + .success-info-item {
+    border-top: 1px solid #E6F9EE;
+}
+
+.success-emergency {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.success-emergency a {
+    color: var(--naver-green);
+}
+
+.btn-success-confirm {
+    width: 100%;
+    padding: 14px;
+    background: var(--naver-green);
+    color: #FFF;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-fast);
+    font-family: inherit;
+}
+
+.btn-success-confirm:hover {
+    background: var(--naver-green-hover);
+}
+
+/* Hero Bridge CTA Section (Hero 아래 독립 배치 - SPEED LOAN 겹침 방지) */
+.hero-bridge-section {
+    padding: 48px 0;
+    background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-top: -2px;
+}
+
+.hero-bridge-section .hero-urgency-chip {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.hero-micro-copy-dark {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 500;
 }

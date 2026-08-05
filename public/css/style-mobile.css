@@ -1,5 +1,5 @@
 /* ==========================================================================
-   마마트레이딩 (MAMA TRADING) - Mobile Dedicated Optimization Stylesheet
+   든든한대부중개 (DEUNDEUN LOAN) - Mobile Dedicated Optimization Stylesheet
    ========================================================================== */
 
 /* Mobile Slide Nav Drawer */
@@ -475,4 +475,33 @@
     .reviews-controls {
         display: none !important;
     }
+
+    /* Growth Hack CRO 개선 요소 모바일 반응형 */
+    .hero-cta-group { margin-top: 20px; gap: 12px; }
+    .btn-hero-primary { font-size: 1.05rem; padding: 14px 32px; }
+    .hero-micro-copy { font-size: 0.78rem; gap: 6px; }
+    .hero-urgency-chip { font-size: 0.78rem; padding: 6px 14px; margin-top: 16px; }
+
+    .hero-bridge-section { padding: 32px 0; }
+    .hero-micro-copy-dark { font-size: 0.78rem; }
+
+    .social-proof-section { padding: 40px 0; }
+    .proof-counter-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+    .counter-num { font-size: 2.4rem; }
+    .counter-suffix { font-size: 1.1rem; }
+    .counter-item p { font-size: 0.85rem; }
+
+    .main-apply-section { padding: 50px 0; }
+    .main-form-card { padding: 24px 18px; }
+    .form-trust-badges { gap: 8px; margin-bottom: 20px; }
+    .form-badge { font-size: 0.72rem; padding: 4px 10px; }
+    .form-field input[type="text"],
+    .form-field input[type="tel"],
+    .form-field select { padding: 12px 14px; font-size: 0.95rem; }
+    .btn-main-submit { padding: 16px; font-size: 1.05rem; }
+
+    .success-modal-card { max-width: 92vw; }
+    .success-body { padding: 24px 18px; }
+    .success-check-circle { width: 60px; height: 60px; font-size: 2rem; }
+    .success-title { font-size: 1.15rem; }
 }

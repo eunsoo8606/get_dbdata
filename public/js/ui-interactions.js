@@ -1,5 +1,5 @@
 /* ==========================================================================
-   마마트레이딩 (MAMA TRADING) - UI Interactions & Scroll Animation JavaScript
+   든든한대부중개 (DEUNDEUN LOAN) - UI Interactions & Scroll Animation JavaScript
    ========================================================================== */
 
 // 1. Sticky Pinned Scroll-Driven Slide & Bottom Bar Visibility
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const resData = await response.json();
 
                     if (resData.success) {
-                        alert(resData.message);
+                        openSuccessModal(dataObj.userName);
                         form.reset();
                     } else {
                         alert(resData.message || '접수 중 오류가 발생했습니다.');
@@ -296,6 +296,69 @@ function closeModal(modalId) {
         document.body.style.overflow = 'auto';
     }
 }
+
+// 접수 완료 축하 모달 오픈 (피크엔드 법칙 적용)
+function openSuccessModal(userName) {
+    const nameEl = document.getElementById('successUserName');
+    if (nameEl && userName) {
+        nameEl.textContent = userName;
+    }
+    openModal('successModal');
+}
+
+// Social Proof 카운터 애니메이션 (IntersectionObserver 트리거)
+document.addEventListener('DOMContentLoaded', () => {
+    const counterNums = document.querySelectorAll('.counter-num');
+    if (counterNums.length === 0) return;
+
+    let counterFired = false;
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !counterFired) {
+                counterFired = true;
+                counterNums.forEach(numEl => {
+                    const target = parseFloat(numEl.dataset.target);
+                    const isFloat = String(target).includes('.');
+                    const duration = 1800;
+                    const startTime = performance.now();
+
+                    const animate = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        // easeOutExpo 커브
+                        const eased = 1 - Math.pow(1 - progress, 4);
+                        const current = eased * target;
+                        numEl.textContent = isFloat ? current.toFixed(1) : Math.floor(current).toLocaleString();
+                        if (progress < 1) requestAnimationFrame(animate);
+                    };
+                    requestAnimationFrame(animate);
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+
+    const proofSection = document.querySelector('.social-proof-section');
+    if (proofSection) counterObserver.observe(proofSection);
+
+    // 오늘 날짜 및 날짜별 잔여 수량 자동 업데이트 (긴급성 칩)
+    const todayEl = document.getElementById('todayDate');
+    const urgencyCountEls = document.querySelectorAll('.urgency-count');
+    if (todayEl || urgencyCountEls.length > 0) {
+        const now = new Date();
+        const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+        if (todayEl) {
+            todayEl.textContent = `${now.getMonth() + 1}월 ${now.getDate()}일(${dayNames[now.getDay()]})`;
+        }
+        
+        // 날짜 기반 의사 난수 생성 (같은 날에는 일정하고, 날짜가 바뀌면 2~7건 범위 내에서 자동 변동)
+        const seed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+        const dailyRemaining = ((seed * 9301 + 49297) % 233280) % 6 + 2; // 2 ~ 7건 사이
+        
+        urgencyCountEls.forEach(el => {
+            el.textContent = `${dailyRemaining}건`;
+        });
+    }
+});
 
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal-overlay')) {

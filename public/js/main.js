@@ -1,5 +1,5 @@
 /* ==========================================================================
-   마마트레이딩 (MAMA TRADING) - Main Client JavaScript Logic
+   든든한대부중개 (DEUNDEUN LOAN) - Main Client JavaScript Logic
    ========================================================================== */
 
 // 1. Interactive Quiz Wizard (3초 승인 진단기)
@@ -88,62 +88,6 @@ function scrollToForm() {
     }
 }
 
-function scrollToFormWithData() {
-    const amountVal = document.getElementById('calcAmountText').innerText;
-    const selectEl = document.getElementById('userAmount');
-    
-    if (selectEl) {
-        selectEl.value = '3,000만원 이상'; // fallback
-        for (let i = 0; i < selectEl.options.length; i++) {
-            if (selectEl.options[i].text.includes(amountVal.replace(' 만원', '만'))) {
-                selectEl.selectedIndex = i;
-                break;
-            }
-        }
-    }
-    scrollToForm();
-}
-
-// 4. AJAX Form Submission Handler (3분 안심 한도조회 제출)
-function handleFormSubmit(e) {
-    e.preventDefault();
-
-    const form = e.target;
-    const userName = (form.userName?.value || '').trim();
-    const userPhone = (form.userPhone?.value || '').trim();
-    const userAmount = form.userAmount?.value || '미지정';
-    const agreeChk = form.agreeChk?.checked ? true : false;
-
-    if (!userName || !userPhone) {
-        alert('필수 항목(성함, 연락처)을 입력해 주세요.');
-        return;
-    }
-
-    if (userPhone.length < 10) {
-        alert('올바른 연락처 10~11자리를 입력해 주세요.');
-        return;
-    }
-
-    // Submit via Fetch API to /api/apply
-    fetch('/api/apply', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userName, userPhone, userAmount, agreeChk })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            alert(data.message);
-            form.reset();
-        } else {
-            alert(data.message || '접수 중 오류가 발생했습니다.');
-        }
-    })
-    .catch(err => {
-        alert('상담 신청 처리 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-        console.error(err);
-    });
-}
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {

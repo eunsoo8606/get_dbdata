@@ -21,6 +21,10 @@
                             든든한대부중개는 복잡한 서류 제출 없이 모바일 30초 신청으로!<br>
                             가족·회사 알림 없는 100% 비밀 보장 맞춤 대출 솔루션을 제공합니다.
                         </p>
+                        <div class="hero-urgency-chip">
+                            <i class="bi bi-clock-fill"></i>
+                            오늘 <strong id="todayDate">8월 5일(화)</strong> 당일 상담 잔여 <strong class="urgency-count">3건</strong>
+                        </div>
                     </div>
 
                 </div>
@@ -36,6 +40,7 @@
                 </div>
             </section>
         </div>
+
         <!-- 6. Custom Loan Products Lineup -->
         <section class="products-section" id="products">
             <div class="container">
@@ -276,6 +281,29 @@
             </div>
         </section>
 
+        <!-- 숫자 기반 Social Proof 카운터 (사회적 증명 강화) -->
+        <section class="social-proof-section">
+            <div class="container">
+                <div class="proof-counter-grid">
+                    <div class="counter-item">
+                        <strong class="counter-num" data-target="15847">0</strong><span class="counter-suffix">건+</span>
+                        <p>누적 상담 건수</p>
+                    </div>
+                    <div class="counter-item">
+                        <strong class="counter-num" data-target="98">0</strong><span class="counter-suffix">%</span>
+                        <p>고객 만족도</p>
+                    </div>
+                    <div class="counter-item">
+                        <strong class="counter-num" data-target="12">0</strong><span class="counter-suffix">분</span>
+                        <p>평균 입금 소요</p>
+                    </div>
+                    <div class="counter-item">
+                        <strong class="counter-num" data-target="4.9">0</strong><span class="counter-suffix">점</span>
+                        <p>서비스 평점</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- 4. Smart Loan Calculator Section -->
         <section class="calculator-section" id="calculator">
             <div class="container">
@@ -538,6 +566,58 @@
                         <span class="dot"></span>
                     </div>
                 </div> <!-- End of reviews-slider-wrapper -->
+
+                <!-- 안심 한도조회 메인 신청 폼 섹션 (CRO 핵심 전환 요소) -->
+                <section class="main-apply-section" id="applicationFormArea">
+                    <div class="container">
+                        <div class="section-header">
+                            <span class="section-sub">QUICK APPLICATION</span>
+                            <h2 class="section-title">3분 안심 <span class="highlight-green">무료 한도조회</span></h2>
+                            <p class="section-desc">신용점수에 전혀 영향 없는 안심 가심사로, 나의 대출 가능 한도를 지금 바로 확인하세요.</p>
+                        </div>
+
+                        <div class="main-form-card">
+                            <div class="form-trust-badges">
+                                <span class="form-badge"><i class="bi bi-shield-lock-fill"></i> SSL 256bit 암호화</span>
+                                <span class="form-badge"><i class="bi bi-file-earmark-check-fill"></i> 정식 등록업체</span>
+                                <span class="form-badge"><i class="bi bi-cash-coin"></i> 수수료 0원</span>
+                            </div>
+
+                            <form id="mainLoanForm" class="main-form-grid" action="/api/apply" method="POST">
+                                <div class="form-field">
+                                    <label for="mainUserName"><i class="bi bi-person-fill"></i> 성함</label>
+                                    <input type="text" id="mainUserName" name="userName" placeholder="실명을 입력해 주세요" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="mainUserPhone"><i class="bi bi-phone-fill"></i> 연락처</label>
+                                    <input type="tel" id="mainUserPhone" name="userPhone" placeholder="'-' 제외 숫자만 입력" maxlength="11" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="mainUserAmount"><i class="bi bi-wallet2"></i> 희망금액</label>
+                                    <select id="mainUserAmount" name="userAmount" required>
+                                        <option value="" disabled selected>선택해 주세요</option>
+                                        <option value="100만원 이하">100만원 이하 (비상금)</option>
+                                        <option value="300만원">300만원</option>
+                                        <option value="500만원">500만원</option>
+                                        <option value="1,000만원">1,000만원</option>
+                                        <option value="2,000만원">2,000만원</option>
+                                        <option value="3,000만원 이상">3,000만원 이상</option>
+                                    </select>
+                                </div>
+                                <div class="form-field form-agree-field">
+                                    <input type="checkbox" id="mainAgreeChk" name="agreeChk" required checked>
+                                    <label for="mainAgreeChk">개인정보 수집 및 이용에 동의합니다</label>
+                                    <button type="button" class="btn-terms-pop" onclick="openModal('privacyModal')">[<uc57d관보기>]</button>
+                                </div>
+                                <button type="submit" class="btn-main-submit">
+                                    <i class="bi bi-lightning-charge-fill"></i> 3분 안심 한도조회 신청
+                                </button>
+                                <p class="form-micro-copy"><i class="bi bi-lock-fill"></i> 고객님의 정보는 암호화되어 안전하게 보호됩니다</p>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
                 <!-- 8. FAQ Accordion -->
                 <section class="faq-section" id="faq">
                     <div class="container">

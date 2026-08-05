@@ -56,3 +56,38 @@
         </div>
     </div>
 </div>
+
+<!-- 접수 완료 축하 모달 (피크엔드 법칙 기반 전환 경험 최적화) -->
+<div class="modal-overlay" id="successModal">
+    <div class="modal-card success-modal-card">
+        <div class="modal-header success-header">
+            <h3>접수 완료</h3>
+            <button class="btn-close-modal" aria-label="모달 닫기" onclick="closeModal('successModal')"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body success-body">
+            <div class="success-icon-area">
+                <div class="success-check-circle">
+                    <i class="bi bi-check-lg"></i>
+                </div>
+            </div>
+            <h4 class="success-title">정상 접수가 완료되었습니다!</h4>
+            <p class="success-name-text"><strong id="successUserName">고객</strong>님의 안심 한도조회가 접수되었습니다.</p>
+            <div class="success-info-box">
+                <div class="success-info-item">
+                    <i class="bi bi-person-check-fill"></i>
+                    <span>전담 상담원이 <strong>배정 완료</strong>되었습니다.</span>
+                </div>
+                <div class="success-info-item">
+                    <i class="bi bi-telephone-fill"></i>
+                    <span><strong>10분 이내</strong>에 연락드리겠습니다.</span>
+                </div>
+                <div class="success-info-item">
+                    <i class="bi bi-shield-lock-fill"></i>
+                    <span>100% 비밀 보장 안심 상담을 진행합니다.</span>
+                </div>
+            </div>
+            <p class="success-emergency">긴급 문의: <a href="tel:01075142893"><strong>010-7514-2893</strong></a></p>
+            <button type="button" class="btn-success-confirm" onclick="closeModal('successModal')">확인</button>
+        </div>
+    </div>
+</div>
