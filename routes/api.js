@@ -92,7 +92,7 @@ router.post(['/apply', '/api/apply'], async (req, res) => {
         return res.json({
             success: true,
             applicationId: insertId,
-            message: `[${userName}] 님의 3분 안심 한도조회 접수가 완료되었습니다.\n담당 상담원이 15분 이내로 안내 연락드리겠습니다!`
+            message: `[${userName}] 님의 3분 안심 한도조회 접수가 완료되었습니다.\n담당 상담원이 확인 후 빠르게 연락드리겠습니다!`
         });
 
     } catch (err) {
