@@ -19,12 +19,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // SEO Robots & Sitemap Support
-app.get('/favicon.ico', (req, res) => res.status(204).end());
+app.get('/favicon.ico', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'favicon.ico'));
+});
 app.get('/robots.txt', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'robots.txt'));
 });
 app.get('/sitemap.xml', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+});
+app.get('/rss.xml', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'rss.xml'));
 });
 
 // Routes Import
@@ -43,14 +48,14 @@ app.use('/admin', adminRoutes);
 // 404 Handler
 app.use((req, res) => {
     res.status(404).render('index', { 
-        pageTitle: '페이지를 찾을 수 없습니다 - 마마트레이딩',
+        pageTitle: '페이지를 찾을 수 없습니다 - 든든한대부중개',
         alertMsg: '요청하신 페이지가 존재하지 않습니다.'
     });
 });
 
 app.listen(PORT, () => {
     console.log(`=================================================`);
-    console.log(`🚀 마마트레이딩 대출 랜딩페이지 서버가 시작되었습니다.`);
+    console.log(`🚀 든든한대부중개 랜딩페이지 서버가 시작되었습니다.`);
     console.log(`👉 http://localhost:${PORT}`);
     console.log(`=================================================`);
 });

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 대시보드 | 마마트레이딩</title>
+    <title>관리자 대시보드 | 든든한대부중개</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -152,7 +152,7 @@
 <body>
 
     <header class="header-bar">
-        <div class="h-brand">MAMA <span>ADMIN CONSOLE</span></div>
+        <div class="h-brand">DEUNDEUN <span>ADMIN CONSOLE</span></div>
         <div class="h-user">
             <span><i class="bi bi-person-circle text-naver-green"></i> <strong><%= adminUser.name %></strong> 님</span>
             <button class="btn-logout" onclick="handleLogout()"><i class="bi bi-box-arrow-right"></i> 로그아웃</button>
@@ -615,7 +615,7 @@
                 const a = document.createElement('a');
                 a.href = downloadUrl;
                 const todayStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-                a.download = `마마트레이딩_대출신청내역_${todayStr}.xlsx`;
+                a.download = `든든한대부중개_대출신청내역_${todayStr}.xlsx`;
                 document.body.appendChild(a);
                 a.click();
                 a.remove();

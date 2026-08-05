@@ -111,7 +111,7 @@ router.get('/:category', (req, res) => {
     }
 
     res.render('product-detail', {
-        pageTitle: `${product.name} | 마마트레이딩`,
+        pageTitle: `${product.name} | 든든한대부중개`,
         currentNav: 'products',
         product: product,
         allProducts: Object.values(productsData)

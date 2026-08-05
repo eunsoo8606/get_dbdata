@@ -114,6 +114,7 @@
     .gnb { display: none; }
     .btn-kakao-top { display: none; }
     .mobile-menu-toggle { display: block; font-size: 1.8rem; color: var(--text-primary); cursor: pointer; }
+    .header-logo-img { height: 55px !important; max-height: 55px !important; }
 
     /* Hero Section Mobile Compact Optimization */
     .hero-sticky-wrapper {

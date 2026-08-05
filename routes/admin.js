@@ -14,7 +14,7 @@ const DEFAULT_ADMIN_PASS = 'admin1234!';
  */
 router.get('/login', (req, res) => {
     res.render('admin/login', {
-        pageTitle: '관리자 로그인 | 마마트레이딩',
+        pageTitle: '관리자 로그인 | 든든한대부중개',
         error: req.query.error || null
     });
 });
@@ -93,7 +93,7 @@ router.post('/api/logout', (req, res) => {
  */
 router.get('/dashboard', verifyAdminToken, (req, res) => {
     res.render('admin/dashboard', {
-        pageTitle: '관리자 대시보드 | 마마트레이딩',
+        pageTitle: '관리자 대시보드 | 든든한대부중개',
         adminUser: req.adminUser
     });
 });
@@ -317,7 +317,7 @@ router.get('/api/export-excel', verifyAdminToken, async (req, res) => {
         const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
 
         const todayStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-        const filename = encodeURIComponent(`마마트레이딩_대출신청내역_${todayStr}.xlsx`);
+        const filename = encodeURIComponent(`든든한대부중개_대출신청내역_${todayStr}.xlsx`);
 
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         res.setHeader('Content-Disposition', `attachment; filename*=UTF-8''${filename}`);

@@ -6,67 +6,67 @@
 
   <!-- 메인 랜딩페이지 -->
   <url>
-    <loc>https://mamatrading.co.kr/</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://dndnlaon.com/</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- 대출 절차 안내 페이지 -->
   <url>
-    <loc>https://mamatrading.co.kr/process</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://dndnlaon.com/process</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- 고객 이용후기 상세 페이지 -->
   <url>
-    <loc>https://mamatrading.co.kr/reviews</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://dndnlaon.com/reviews</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- 맞춤 대출 상품 서브페이지 라인업 -->
   <url>
-    <loc>https://mamatrading.co.kr/products/worker</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://dndnlaon.com/products/employee</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://mamatrading.co.kr/products/jobless</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://dndnlaon.com/products/unemployed</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://mamatrading.co.kr/products/business</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://dndnlaon.com/products/women</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://mamatrading.co.kr/products/women</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://dndnlaon.com/products/business</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://mamatrading.co.kr/products/refinance</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://dndnlaon.com/products/lowcredit</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://mamatrading.co.kr/products/emergency</loc>
-    <lastmod>2026-08-01</lastmod>
+    <loc>https://dndnlaon.com/products/debt-consolidation</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
