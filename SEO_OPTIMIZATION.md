@@ -11,8 +11,8 @@
 - **대표 로고 및 메타 이미지 반영**:
   - 홈페이지 네비게이션 및 슬라이드 로고: `logo.png` / `logo.webp`
   - Open Graph (`og:image`) & Twitter Cards (`twitter:image`): `meta-logo.png`
-- **네이버 서치어드바이저 검증 메타**: `<meta name="naver-site-verification" content="mamatrading_naver_verification_code_2026">`
-- **구글 서치콘솔 검증 메타**: `<meta name="google-site-verification" content="mamatrading_google_verification_code_2026">`
+- **네이버 서치어드바이저 검증 메타**: `<meta name="naver-site-verification" content="bb4d887848b63f053885a12bf222ce08aad33f6b" />`
+- **구글 서치콘솔 검증 메타**: `<meta name="google-site-verification" content="v_2FA6-BwmyLiqxrVWHDKm-nCkJdN-2CwJ7wjhAClwE" />`
 - **대표 Canonical URL**: `<link rel="canonical" href="https://dndnlaon.com">`
 - **Open Graph & Twitter Cards**: 카카오톡, 텔레그램, 페이스북 소셜 미디어 공유 시 썸네일 이미지 및 마케팅 문구 노출 최적화
 
