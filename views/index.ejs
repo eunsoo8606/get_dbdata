@@ -1,694 +1,715 @@
 <%- include('partials/head') %>
-<%- include('partials/header') %>
+    <%- include('partials/header') %>
 
-<main id="main-content">
+        <main id="main-content">
 
-        <!-- 1. Hero Section (Sticky Pinned Scroll: 글자가 다 모일 때까지 화면 고정) -->
-        <div class="hero-sticky-wrapper">
-            <section class="hero-section">
-                <div class="container hero-full-container">
+            <!-- 1. Hero Section (Sticky Pinned Scroll: 글자가 다 모일 때까지 화면 고정) -->
+            <div class="hero-sticky-wrapper">
+                <section class="hero-section">
+                    <div class="container hero-full-container">
 
-                    <!-- Hero Content Center Alignment -->
-                    <div class="hero-intro-area text-center">
-                        <div class="trust-pill">
-                            <i class="bi bi-shield-lock-fill"></i> 신용조회 이력 0% · 100% 무기록 안심 가심사
+                        <!-- Hero Content Center Alignment -->
+                        <div class="hero-intro-area text-center">
+                            <div class="trust-pill">
+                                <i class="bi bi-shield-lock-fill"></i> 신용조회 이력 0% · 100% 무기록 안심 가심사
+                            </div>
+                            <h1 class="hero-title">
+                                당신의 급한 순간,<br>
+                                <span class="text-naver-green">15분 당일 입금</span>으로 든든하게
+                            </h1>
+                            <p class="hero-desc">
+                                든든한대부중개는 복잡한 서류 제출 없이 모바일 30초 신청으로!<br>
+                                가족·회사 알림 없는 100% 비밀 보장 맞춤 대출 솔루션을 제공합니다.
+                            </p>
+                            <div class="hero-urgency-chip">
+                                <i class="bi bi-clock-fill"></i>
+                                오늘 <strong id="todayDate">8월 5일(화)</strong> 당일 상담 잔여 <strong
+                                    class="urgency-count">3건</strong>
+                            </div>
                         </div>
-                        <h1 class="hero-title">
-                            당신의 급한 순간,<br>
-                            <span class="text-naver-green">15분 당일 입금</span>으로 든든하게
-                        </h1>
-                        <p class="hero-desc">
-                            든든한대부중개는 복잡한 서류 제출 없이 모바일 30초 신청으로!<br>
-                            가족·회사 알림 없는 100% 비밀 보장 맞춤 대출 솔루션을 제공합니다.
-                        </p>
-                        <div class="hero-urgency-chip">
-                            <i class="bi bi-clock-fill"></i>
-                            오늘 <strong id="todayDate">8월 5일(화)</strong> 당일 상담 잔여 <strong class="urgency-count">3건</strong>
-                        </div>
+
                     </div>
 
-                </div>
-
-                <!-- Hero Bottom Giant Banner (실시간 스크롤 반응형: 좌측 'SPEED LOAN' & 우측 'LOW RATE') -->
-                <div class="hero-giant-slide-bar" id="heroGiantSlideBar">
-                    <div class="giant-left-text text-outline" id="giantLeftText">
-                        SPEED LOAN
+                    <!-- Hero Bottom Giant Banner (실시간 스크롤 반응형: 좌측 'SPEED LOAN' & 우측 'LOW RATE') -->
+                    <div class="hero-giant-slide-bar" id="heroGiantSlideBar">
+                        <div class="giant-left-text text-outline" id="giantLeftText">
+                            SPEED LOAN
+                        </div>
+                        <div class="giant-right-text text-solid" id="giantRightText">
+                            LOW RATE
+                        </div>
                     </div>
-                    <div class="giant-right-text text-solid" id="giantRightText">
-                        LOW RATE
+                </section>
+            </div>
+
+            <!-- 6. Custom Loan Products Lineup -->
+            <section class="products-section" id="products">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-sub">CUSTOM PRODUCTS</span>
+                        <h2 class="section-title">맞춤형 대출 상품 안내</h2>
+                        <p class="section-desc">고객님의 직업 및 상황별로 최적의 승인 조건과 한도를 안내합니다.</p>
+                    </div>
+
+                    <div class="products-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card">
+                            <div class="p-badge">가장 빠른 승인</div>
+                            <div class="p-icon"><i class="bi bi-briefcase-fill"></i></div>
+                            <h3 class="p-title">직장인 / 사업자 대출</h3>
+                            <div class="p-info-list">
+                                <dl>
+                                    <dt>대출 한도</dt>
+                                    <dd class="highlight">최대 5,000만원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대출 금리</dt>
+                                    <dd>연 5.0% ~ 20.0% 이내</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대출 기간</dt>
+                                    <dd>1개월 ~ 60개월까지</dd>
+                                </dl>
+                            </div>
+                            <p class="p-tag">#4대보험미가입가능 #자영업자 #프리랜서 #당일입금</p>
+                            <a href="/products/employee" class="btn-product-apply">상품 상세보기 <i
+                                    class="bi bi-chevron-right"></i></a>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="product-card">
+                            <div class="p-badge hot">인기 상품</div>
+                            <div class="p-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+                            <h3 class="p-title">무직자 / 비상금 대출</h3>
+                            <div class="p-info-list">
+                                <dl>
+                                    <dt>대출 한도</dt>
+                                    <dd class="highlight">최대 1,000만원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대출 금리</dt>
+                                    <dd>연 5.0% ~ 20.0% 이내</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대출 기간</dt>
+                                    <dd>1개월 ~ 60개월까지</dd>
+                                </dl>
+                            </div>
+                            <p class="p-tag">#무서류 #무방문 #소액대출 #당일승인 #청년전용</p>
+                            <a href="/products/unemployed" class="btn-product-apply">상품 상세보기 <i
+                                    class="bi bi-chevron-right"></i></a>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="product-card">
+                            <div class="p-badge secret">100% 비밀보장</div>
+                            <div class="p-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+                            <h3 class="p-title">여성 / 주부 우대 대출</h3>
+                            <div class="p-info-list">
+                                <dl>
+                                    <dt>대출 한도</dt>
+                                    <dd class="highlight">최대 2,000만원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대출 금리</dt>
+                                    <dd>연 5.0% ~ 20.0% 이내</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대출 기간</dt>
+                                    <dd>1개월 ~ 60개월까지</dd>
+                                </dl>
+                            </div>
+                            <p class="p-tag">#가족모르게 #비밀보장 #전업주부 #여성전용상담원</p>
+                            <a href="/products/women" class="btn-product-apply">상품 상세보기 <i
+                                    class="bi bi-chevron-right"></i></a>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="product-card">
+                            <div class="p-badge">자영업 우대</div>
+                            <div class="p-icon"><i class="bi bi-shop"></i></div>
+                            <h3 class="p-title">자영업 / 사업자 대출</h3>
+                            <div class="p-info-list">
+                                <dl>
+                                    <dt>대출 한도</dt>
+                                    <dd class="highlight">최대 5,000만원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대출 금리</dt>
+                                    <dd>연 5.0% ~ 20.0% 이내</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대출 기간</dt>
+                                    <dd>1개월 ~ 60개월까지</dd>
+                                </dl>
+                            </div>
+                            <p class="p-tag">#운영자금 #물품대금 #신규사업자 #우대한도</p>
+                            <a href="/products/business" class="btn-product-apply">상품 상세보기 <i
+                                    class="bi bi-chevron-right"></i></a>
+                        </div>
+
+                        <!-- Product 5 -->
+                        <div class="product-card">
+                            <div class="p-badge">부결자 특화</div>
+                            <div class="p-icon"><i class="bi bi-person-fill-gear"></i></div>
+                            <h3 class="p-title">저신용 / 다중채무 대출</h3>
+                            <div class="p-info-list">
+                                <dl>
+                                    <dt>대출 한도</dt>
+                                    <dd class="highlight">최대 3,000만원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대출 금리</dt>
+                                    <dd>연 5.0% ~ 20.0% 이내</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대출 기간</dt>
+                                    <dd>1개월 ~ 60개월까지</dd>
+                                </dl>
+                            </div>
+                            <p class="p-tag">#타사거절자 #신용점수낮아도OK #맞춤상담</p>
+                            <a href="/products/lowcredit" class="btn-product-apply">상품 상세보기 <i
+                                    class="bi bi-chevron-right"></i></a>
+                        </div>
+
+                        <!-- Product 6 -->
+                        <div class="product-card">
+                            <div class="p-badge">부담 경감</div>
+                            <div class="p-icon"><i class="bi bi-arrow-repeat"></i></div>
+                            <h3 class="p-title">대환 / 통신연체 대납대출</h3>
+                            <div class="p-info-list">
+                                <dl>
+                                    <dt>대출 한도</dt>
+                                    <dd class="highlight">최대 5,000만원</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대출 금리</dt>
+                                    <dd>연 5.0% ~ 20.0% 이내</dd>
+                                </dl>
+                                <dl>
+                                    <dt>대출 기간</dt>
+                                    <dd>1개월 ~ 120개월까지</dd>
+                                </dl>
+                            </div>
+                            <p class="p-tag">#고금리대환 #통신연체대납 #통합대출 #월입금액감소</p>
+                            <a href="/products/debt-consolidation" class="btn-product-apply">상품 상세보기 <i
+                                    class="bi bi-chevron-right"></i></a>
+                        </div>
                     </div>
                 </div>
             </section>
-        </div>
 
-        <!-- 6. Custom Loan Products Lineup -->
-        <section class="products-section" id="products">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-sub">CUSTOM PRODUCTS</span>
-                    <h2 class="section-title">맞춤형 대출 상품 안내</h2>
-                    <p class="section-desc">고객님의 직업 및 상황별로 최적의 승인 조건과 한도를 안내합니다.</p>
-                </div>
-
-                <div class="products-grid">
-                    <!-- Product 1 -->
-                    <div class="product-card">
-                        <div class="p-badge">가장 빠른 승인</div>
-                        <div class="p-icon"><i class="bi bi-briefcase-fill"></i></div>
-                        <h3 class="p-title">직장인 / 사업자 대출</h3>
-                        <div class="p-info-list">
-                            <dl>
-                                <dt>대출 한도</dt>
-                                <dd class="highlight">최대 5,000만원</dd>
-                            </dl>
-                            <dl>
-                                <dt>대출 금리</dt>
-                                <dd>연 5.0% ~ 20.0% 이내</dd>
-                            </dl>
-                            <dl>
-                                <dt>대출 기간</dt>
-                                <dd>1개월 ~ 60개월까지</dd>
-                            </dl>
-                        </div>
-                        <p class="p-tag">#4대보험미가입가능 #자영업자 #프리랜서 #당일입금</p>
-                        <a href="/products/employee" class="btn-product-apply">상품 상세보기 <i
-                                class="bi bi-chevron-right"></i></a>
+            <!-- 3. Why Choose Us (든든한대부중개를 선택해야 하는 5가지 이유) -->
+            <section class="why-us-section" id="whyUs">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-sub">WHY DEUNDEUN LOAN</span>
+                        <h2 class="section-title">든든한대부중개를 <span class="highlight-green">선택해야 하는 5가지 이유</span></h2>
+                        <p class="section-desc">고객님들이 정식 등록된 든든한대부중개를 믿고 선택하시는 특별한 차별점입니다.</p>
                     </div>
 
-                    <!-- Product 2 -->
-                    <div class="product-card">
-                        <div class="p-badge hot">인기 상품</div>
-                        <div class="p-icon"><i class="bi bi-lightning-charge-fill"></i></div>
-                        <h3 class="p-title">무직자 / 비상금 대출</h3>
-                        <div class="p-info-list">
-                            <dl>
-                                <dt>대출 한도</dt>
-                                <dd class="highlight">최대 1,000만원</dd>
-                            </dl>
-                            <dl>
-                                <dt>대출 금리</dt>
-                                <dd>연 5.0% ~ 20.0% 이내</dd>
-                            </dl>
-                            <dl>
-                                <dt>대출 기간</dt>
-                                <dd>1개월 ~ 60개월까지</dd>
-                            </dl>
-                        </div>
-                        <p class="p-tag">#무서류 #무방문 #소액대출 #당일승인 #청년전용</p>
-                        <a href="/products/unemployed" class="btn-product-apply">상품 상세보기 <i
-                                class="bi bi-chevron-right"></i></a>
-                    </div>
-
-                    <!-- Product 3 -->
-                    <div class="product-card">
-                        <div class="p-badge secret">100% 비밀보장</div>
-                        <div class="p-icon"><i class="bi bi-heart-pulse-fill"></i></div>
-                        <h3 class="p-title">여성 / 주부 우대 대출</h3>
-                        <div class="p-info-list">
-                            <dl>
-                                <dt>대출 한도</dt>
-                                <dd class="highlight">최대 2,000만원</dd>
-                            </dl>
-                            <dl>
-                                <dt>대출 금리</dt>
-                                <dd>연 5.0% ~ 20.0% 이내</dd>
-                            </dl>
-                            <dl>
-                                <dt>대출 기간</dt>
-                                <dd>1개월 ~ 60개월까지</dd>
-                            </dl>
-                        </div>
-                        <p class="p-tag">#가족모르게 #비밀보장 #전업주부 #여성전용상담원</p>
-                        <a href="/products/women" class="btn-product-apply">상품 상세보기 <i
-                                class="bi bi-chevron-right"></i></a>
-                    </div>
-
-                    <!-- Product 4 -->
-                    <div class="product-card">
-                        <div class="p-badge">자영업 우대</div>
-                        <div class="p-icon"><i class="bi bi-shop"></i></div>
-                        <h3 class="p-title">자영업 / 사업자 대출</h3>
-                        <div class="p-info-list">
-                            <dl>
-                                <dt>대출 한도</dt>
-                                <dd class="highlight">최대 5,000만원</dd>
-                            </dl>
-                            <dl>
-                                <dt>대출 금리</dt>
-                                <dd>연 5.0% ~ 20.0% 이내</dd>
-                            </dl>
-                            <dl>
-                                <dt>대출 기간</dt>
-                                <dd>1개월 ~ 60개월까지</dd>
-                            </dl>
-                        </div>
-                        <p class="p-tag">#운영자금 #물품대금 #신규사업자 #우대한도</p>
-                        <a href="/products/business" class="btn-product-apply">상품 상세보기 <i
-                                class="bi bi-chevron-right"></i></a>
-                    </div>
-
-                    <!-- Product 5 -->
-                    <div class="product-card">
-                        <div class="p-badge">부결자 특화</div>
-                        <div class="p-icon"><i class="bi bi-person-fill-gear"></i></div>
-                        <h3 class="p-title">저신용 / 다중채무 대출</h3>
-                        <div class="p-info-list">
-                            <dl>
-                                <dt>대출 한도</dt>
-                                <dd class="highlight">최대 3,000만원</dd>
-                            </dl>
-                            <dl>
-                                <dt>대출 금리</dt>
-                                <dd>연 5.0% ~ 20.0% 이내</dd>
-                            </dl>
-                            <dl>
-                                <dt>대출 기간</dt>
-                                <dd>1개월 ~ 60개월까지</dd>
-                            </dl>
-                        </div>
-                        <p class="p-tag">#타사거절자 #신용점수낮아도OK #맞춤상담</p>
-                        <a href="/products/lowcredit" class="btn-product-apply">상품 상세보기 <i
-                                class="bi bi-chevron-right"></i></a>
-                    </div>
-
-                    <!-- Product 6 -->
-                    <div class="product-card">
-                        <div class="p-badge">부담 경감</div>
-                        <div class="p-icon"><i class="bi bi-arrow-repeat"></i></div>
-                        <h3 class="p-title">대환 / 통신연체 대납대출</h3>
-                        <div class="p-info-list">
-                            <dl>
-                                <dt>대출 한도</dt>
-                                <dd class="highlight">최대 5,000만원</dd>
-                            </dl>
-                            <dl>
-                                <dt>대출 금리</dt>
-                                <dd>연 5.0% ~ 20.0% 이내</dd>
-                            </dl>
-                            <dl>
-                                <dt>대출 기간</dt>
-                                <dd>1개월 ~ 120개월까지</dd>
-                            </dl>
-                        </div>
-                        <p class="p-tag">#고금리대환 #통신연체대납 #통합대출 #월입금액감소</p>
-                        <a href="/products/debt-consolidation" class="btn-product-apply">상품 상세보기 <i
-                                class="bi bi-chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. Why Choose Us (든든한대부중개를 선택해야 하는 5가지 이유) -->
-        <section class="why-us-section" id="whyUs">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-sub">WHY DEUNDEUN LOAN</span>
-                    <h2 class="section-title">든든한대부중개를 <span class="highlight-green">선택해야 하는 5가지 이유</span></h2>
-                    <p class="section-desc">고객님들이 정식 등록된 든든한대부중개를 믿고 선택하시는 특별한 차별점입니다.</p>
-                </div>
-
-                <div class="why-grid">
-                    <!-- Card 1 -->
-                    <div class="why-card">
-                        <div class="why-card-top">
-                            <span class="why-step-chip">01. 높은 한도</span>
-                            <h3>조건에 맞춰 타사대비 높은 한도</h3>
-                        </div>
-                        <div class="why-card-body">
-                            <p class="w-main">기본대출승인 금액 + <br><strong>든든한대부중개 추가금액</strong></p>
-                            <div class="w-footer">
-                                <span>타사 대비 높은 대출 한도 달성</span>
+                    <div class="why-grid">
+                        <!-- Card 1 -->
+                        <div class="why-card">
+                            <div class="why-card-top">
+                                <span class="why-step-chip">01. 높은 한도</span>
+                                <h3>조건에 맞춰 타사대비 높은 한도</h3>
+                            </div>
+                            <div class="why-card-body">
+                                <p class="w-main">기본대출승인 금액 + <br><strong>든든한대부중개 추가금액</strong></p>
+                                <div class="w-footer">
+                                    <span>타사 대비 높은 대출 한도 달성</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Card 2 -->
-                    <div class="why-card">
-                        <div class="why-card-top">
-                            <span class="why-step-chip">02. 간소화 절차</span>
-                            <h3>간소화된 대출 절차</h3>
-                        </div>
-                        <div class="why-card-body">
-                            <p class="w-main">클릭 한번으로 <br><strong>간편하게 대출 신청</strong></p>
-                            <div class="w-footer">
-                                <span>경우에 따라 필요 서류 없음</span>
+                        <!-- Card 2 -->
+                        <div class="why-card">
+                            <div class="why-card-top">
+                                <span class="why-step-chip">02. 간소화 절차</span>
+                                <h3>간소화된 대출 절차</h3>
+                            </div>
+                            <div class="why-card-body">
+                                <p class="w-main">클릭 한번으로 <br><strong>간편하게 대출 신청</strong></p>
+                                <div class="w-footer">
+                                    <span>경우에 따라 필요 서류 없음</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Card 3 -->
-                    <div class="why-card highlight-card">
-                        <div class="why-card-top">
-                            <span class="why-step-chip hot">03. 빠른 승인</span>
-                            <h3>빠른 상담 당일 승인</h3>
-                        </div>
-                        <div class="why-card-body">
-                            <p class="w-main">비상금, 급한 자금 <br><strong>당일 즉시 해결 가능</strong></p>
-                            <div class="w-footer">
-                                <span>고객님의 상황에 맞춘 1:1 맞춤 상담</span>
+                        <!-- Card 3 -->
+                        <div class="why-card highlight-card">
+                            <div class="why-card-top">
+                                <span class="why-step-chip hot">03. 빠른 승인</span>
+                                <h3>빠른 상담 당일 승인</h3>
+                            </div>
+                            <div class="why-card-body">
+                                <p class="w-main">비상금, 급한 자금 <br><strong>당일 즉시 해결 가능</strong></p>
+                                <div class="w-footer">
+                                    <span>고객님의 상황에 맞춘 1:1 맞춤 상담</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Card 4 -->
-                    <div class="why-card">
-                        <div class="why-card-top">
-                            <span class="why-step-chip">04. 불법 수수료 NO</span>
-                            <h3>각종 불법 수수료 요구 NO!</h3>
-                        </div>
-                        <div class="why-card-body">
-                            <p class="w-main">불법 중개 수수료 없는 <br><strong>정부 정식 인가 업체</strong></p>
-                            <div class="w-footer">
-                                <span>중도상환수수료 부담 최소화</span>
+                        <!-- Card 4 -->
+                        <div class="why-card">
+                            <div class="why-card-top">
+                                <span class="why-step-chip">04. 불법 수수료 NO</span>
+                                <h3>각종 불법 수수료 요구 NO!</h3>
+                            </div>
+                            <div class="why-card-body">
+                                <p class="w-main">불법 중개 수수료 없는 <br><strong>정부 정식 인가 업체</strong></p>
+                                <div class="w-footer">
+                                    <span>중도상환수수료 부담 최소화</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Card 5 -->
-                    <div class="why-card">
-                        <div class="why-card-top">
-                            <span class="why-step-chip">05. 개인정보 철저</span>
-                            <h3>개인정보 보호는 철저하게</h3>
-                        </div>
-                        <div class="why-card-body">
-                            <p class="w-main">개인정보 관련 서류는 <br><strong>파기하여 철저 관리</strong></p>
-                            <div class="w-footer">
-                                <span>비공개 익명 상담으로 안전 진행</span>
+                        <!-- Card 5 -->
+                        <div class="why-card">
+                            <div class="why-card-top">
+                                <span class="why-step-chip">05. 개인정보 철저</span>
+                                <h3>개인정보 보호는 철저하게</h3>
+                            </div>
+                            <div class="why-card-body">
+                                <p class="w-main">개인정보 관련 서류는 <br><strong>파기하여 철저 관리</strong></p>
+                                <div class="w-footer">
+                                    <span>비공개 익명 상담으로 안전 진행</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 숫자 기반 Social Proof 카운터 (사회적 증명 강화) -->
-        <section class="social-proof-section">
-            <div class="container">
-                <div class="proof-counter-grid">
-                    <div class="counter-item">
-                        <strong class="counter-num" data-target="15847">0</strong><span class="counter-suffix">건+</span>
-                        <p>누적 상담 건수</p>
-                    </div>
-                    <div class="counter-item">
-                        <strong class="counter-num" data-target="98">0</strong><span class="counter-suffix">%</span>
-                        <p>고객 만족도</p>
-                    </div>
-                    <div class="counter-item">
-                        <strong class="counter-num" data-target="12">0</strong><span class="counter-suffix">분</span>
-                        <p>평균 입금 소요</p>
-                    </div>
-                    <div class="counter-item">
-                        <strong class="counter-num" data-target="4.9">0</strong><span class="counter-suffix">점</span>
-                        <p>서비스 평점</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- 4. Smart Loan Calculator Section -->
-        <section class="calculator-section" id="calculator">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-sub">SMART CALCULATOR</span>
-                    <h2 class="section-title">스마트 실시간 대출 계산기</h2>
-                    <p class="section-desc">필요 금액과 이용 기간을 슬라이더로 조절하여 예상 월 납입금을 즉시 확인해 보세요.</p>
-                </div>
-
-                <div class="calc-card">
-                    <div class="calc-grid">
-                        <div class="calc-sliders">
-
-                            <!-- Amount Slider -->
-                            <div class="slider-group">
-                                <div class="slider-label-row">
-                                    <label for="calcAmountSlider" class="slider-title"><i class="bi bi-wallet2"></i> 대출 희망 금액</label>
-                                    <span class="slider-value" id="calcAmountText">500 만원</span>
-                                </div>
-                                <input type="range" class="range-slider" id="calcAmountSlider" min="100" max="5000"
-                                    step="50" value="500" oninput="updateCalculator()" aria-label="대출 희망 금액">
-                                <div class="range-marks">
-                                    <span>100만원</span>
-                                    <span>1,000만원</span>
-                                    <span>3,000만원</span>
-                                    <span>5,000만원</span>
-                                </div>
-                            </div>
-
-                            <!-- Period Slider -->
-                            <div class="slider-group">
-                                <div class="slider-label-row">
-                                    <label for="calcPeriodSlider" class="slider-title"><i class="bi bi-calendar-check"></i> 대출 기간</label>
-                                    <span class="slider-value" id="calcPeriodText">12 개월</span>
-                                </div>
-                                <input type="range" class="range-slider" id="calcPeriodSlider" min="1" max="60" step="1"
-                                    value="12" oninput="updateCalculator()" aria-label="대출 기간">
-                                <div class="range-marks">
-                                    <span>1개월</span>
-                                    <span>12개월</span>
-                                    <span>36개월</span>
-                                    <span>60개월</span>
-                                </div>
-                            </div>
-
-                            <!-- Interest Rate Slider -->
-                            <div class="slider-group">
-                                <div class="slider-label-row">
-                                    <label for="calcRateSlider" class="slider-title"><i class="bi bi-percent"></i> 적용 금리 (연)</label>
-                                    <span class="slider-value" id="calcRateText">연 9.9 %</span>
-                                </div>
-                                <input type="range" class="range-slider" id="calcRateSlider" min="5" max="20" step="0.1"
-                                    value="9.9" oninput="updateCalculator()" aria-label="적용 금리">
-                                <div class="range-marks">
-                                    <span>최저 연 5.0%</span>
-                                    <span>평균 연 9.9%</span>
-                                    <span>법정최고 연 20.0%</span>
-                                </div>
-                            </div>
-
+            <!-- 숫자 기반 Social Proof 카운터 (사회적 증명 강화) -->
+            <section class="social-proof-section">
+                <div class="container">
+                    <div class="proof-counter-grid">
+                        <div class="counter-item">
+                            <strong class="counter-num" data-target="15847">0</strong><span
+                                class="counter-suffix">건</span>
+                            <p>누적 상담 건수</p>
                         </div>
+                        <div class="counter-item">
+                            <strong class="counter-num" data-target="98">0</strong><span class="counter-suffix">%</span>
+                            <p>고객 만족도</p>
+                        </div>
+                        <div class="counter-item">
+                            <strong class="counter-num" data-target="12">0</strong><span class="counter-suffix">분</span>
+                            <p>평균 입금 소요</p>
+                        </div>
+                        <div class="counter-item">
+                            <strong class="counter-num" data-target="4.9">0</strong><span
+                                class="counter-suffix">점</span>
+                            <p>서비스 평점</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- 4. Smart Loan Calculator Section -->
+            <section class="calculator-section" id="calculator">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-sub">SMART CALCULATOR</span>
+                        <h2 class="section-title">스마트 실시간 대출 계산기</h2>
+                        <p class="section-desc">필요 금액과 이용 기간을 슬라이더로 조절하여 예상 월 납입금을 즉시 확인해 보세요.</p>
+                    </div>
 
-                        <!-- Result Card -->
-                        <div class="calc-result-box">
-                            <div class="result-inner">
-                                <span class="res-tag">원리금균등상환 기준</span>
-                                <div class="res-row">
-                                    <span class="res-label">예상 월 납입금</span>
-                                    <span class="res-main-val" id="calcMonthlyPayment">439,375 원</span>
-                                </div>
-                                <div class="res-divider"></div>
-                                <div class="res-detail-grid">
-                                    <div>
-                                        <span class="d-label">총 상환 금액</span>
-                                        <strong class="d-val" id="calcTotalPayment">5,272,500 원</strong>
+                    <div class="calc-card">
+                        <div class="calc-grid">
+                            <div class="calc-sliders">
+
+                                <!-- Amount Slider -->
+                                <div class="slider-group">
+                                    <div class="slider-label-row">
+                                        <label for="calcAmountSlider" class="slider-title"><i class="bi bi-wallet2"></i>
+                                            대출 희망 금액</label>
+                                        <span class="slider-value" id="calcAmountText">500 만원</span>
                                     </div>
-                                    <div>
-                                        <span class="d-label">총 이자 비용</span>
-                                        <strong class="d-val" id="calcTotalInterest">272,500 원</strong>
+                                    <input type="range" class="range-slider" id="calcAmountSlider" min="100" max="5000"
+                                        step="50" value="500" oninput="updateCalculator()" aria-label="대출 희망 금액">
+                                    <div class="range-marks">
+                                        <span>100만원</span>
+                                        <span>1,000만원</span>
+                                        <span>3,000만원</span>
+                                        <span>5,000만원</span>
                                     </div>
                                 </div>
 
-                                <!-- Visual Chip -->
-                                <div class="visual-chip" id="calcVisualChip">
-                                    <span id="chipText">하루 커피 한 잔 값(약 14,640원)으로 해결!</span>
+                                <!-- Period Slider -->
+                                <div class="slider-group">
+                                    <div class="slider-label-row">
+                                        <label for="calcPeriodSlider" class="slider-title"><i
+                                                class="bi bi-calendar-check"></i> 대출 기간</label>
+                                        <span class="slider-value" id="calcPeriodText">12 개월</span>
+                                    </div>
+                                    <input type="range" class="range-slider" id="calcPeriodSlider" min="1" max="60"
+                                        step="1" value="12" oninput="updateCalculator()" aria-label="대출 기간">
+                                    <div class="range-marks">
+                                        <span>1개월</span>
+                                        <span>12개월</span>
+                                        <span>36개월</span>
+                                        <span>60개월</span>
+                                    </div>
                                 </div>
 
-                                <button type="button" class="btn-calc-apply" onclick="scrollToFormWithData()">
-                                    이 조건으로 3분 안심 한도조회하기 <i class="bi bi-arrow-right"></i>
-                                </button>
+                                <!-- Interest Rate Slider -->
+                                <div class="slider-group">
+                                    <div class="slider-label-row">
+                                        <label for="calcRateSlider" class="slider-title"><i class="bi bi-percent"></i>
+                                            적용 금리 (연)</label>
+                                        <span class="slider-value" id="calcRateText">연 9.9 %</span>
+                                    </div>
+                                    <input type="range" class="range-slider" id="calcRateSlider" min="5" max="20"
+                                        step="0.1" value="9.9" oninput="updateCalculator()" aria-label="적용 금리">
+                                    <div class="range-marks">
+                                        <span>최저 연 5.0%</span>
+                                        <span>평균 연 9.9%</span>
+                                        <span>법정최고 연 20.0%</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Result Card -->
+                            <div class="calc-result-box">
+                                <div class="result-inner">
+                                    <span class="res-tag">원리금균등상환 기준</span>
+                                    <div class="res-row">
+                                        <span class="res-label">예상 월 납입금</span>
+                                        <span class="res-main-val" id="calcMonthlyPayment">439,375 원</span>
+                                    </div>
+                                    <div class="res-divider"></div>
+                                    <div class="res-detail-grid">
+                                        <div>
+                                            <span class="d-label">총 상환 금액</span>
+                                            <strong class="d-val" id="calcTotalPayment">5,272,500 원</strong>
+                                        </div>
+                                        <div>
+                                            <span class="d-label">총 이자 비용</span>
+                                            <strong class="d-val" id="calcTotalInterest">272,500 원</strong>
+                                        </div>
+                                    </div>
+
+                                    <!-- Visual Chip -->
+                                    <div class="visual-chip" id="calcVisualChip">
+                                        <span id="chipText">하루 커피 한 잔 값(약 14,640원)으로 해결!</span>
+                                    </div>
+
+                                    <button type="button" class="btn-calc-apply" onclick="scrollToFormWithData()">
+                                        이 조건으로 3분 안심 한도조회하기 <i class="bi bi-arrow-right"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 5. Speed Loan Process (대출 절차 섹션) -->
-        <section class="process-section" id="process">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-sub">SIMPLE 4-STEP</span>
-                    <h2 class="section-title">스피드 4단계 대출 절차</h2>
-                    <p class="section-desc">지점 방문이나 서류 준비의 번거로움 없이, 모바일에서 깔끔하게 마무리됩니다.</p>
-                </div>
-
-                <div class="process-grid">
-                    <div class="process-card process-card-1">
-                        <div class="p-step-num">01</div>
-                        <div class="p-icon-box"><i class="bi bi-phone-vibrate-fill"></i></div>
-                        <h3>3분 안심 신청</h3>
-                        <p>성함, 연락처, 희망금액 입력 (가심사 단계는 신용점수 하락 없음)</p>
-                    </div>
-                    <div class="process-card process-card-2">
-                        <div class="p-step-num">02</div>
-                        <div class="p-icon-box"><i class="bi bi-headset"></i></div>
-                        <h3>1:1 안심 비밀 상담</h3>
-                        <p>전담 상담원 배정 후 가족·회사 알림 없는 맞춤 조건 안내</p>
-                    </div>
-                    <div class="process-card process-card-3">
-                        <div class="p-step-num">03</div>
-                        <div class="p-icon-box"><i class="bi bi-file-earmark-check-fill"></i></div>
-                        <h3>스피드 승인 심사</h3>
-                        <p>무방문·비대면 간편 서류 확인 후 당일 승인 완료</p>
-                    </div>
-                    <div class="process-card process-card-4 active-process">
-                        <div class="p-step-num">04</div>
-                        <div class="p-icon-box"><i class="bi bi-bank2"></i></div>
-                        <h3>본인 통장 즉시 입금</h3>
-                        <p>승인 즉시 지정한 계좌로 15분 내 당일 안전 입금</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. Trusted Counselor & Reviews -->
-        <section class="reviews-section" id="reviews">
-            <div class="container">
-
-                <div class="counselor-banner-box">
-                    <img src="/images/trusted_consultant.webp" alt="든든한대부중개 전문 상담원" class="counselor-img" width="102" height="102" loading="lazy">
-                    <div class="counselor-info">
-                        <span class="c-badge"><i class="bi bi-person-check-fill"></i> 1:1 전담 안심 케어</span>
-                        <h3>"고객님의 어려운 순간, 정직하고 빠르게 함께하겠습니다."</h3>
-                        <p>든든한대부중개는 지자체 정식 등록업체로서 어떠한 이유로도 불법 수수료를 요구하지 않으며, 100% 비대면 익명 상담으로 고객님의 사생활을 철저히 보호합니다.</p>
-                    </div>
-                </div>
-
-                <div class="reviews-slider-wrapper">
-                    <div class="section-header text-center" style="margin-bottom: 30px;">
-                        <span class="section-sub">REAL REVIEWS</span>
-                        <h2 class="section-title">고객 실제 이용 후기</h2>
-                        <p class="section-desc">든든한대부중개를 통해 긴급 자금을 해결하신 고객님들의 솔직 후기입니다.</p>
+            <!-- 5. Speed Loan Process (대출 절차 섹션) -->
+            <section class="process-section" id="process">
+                <div class="container">
+                    <div class="section-header">
+                        <span class="section-sub">SIMPLE 4-STEP</span>
+                        <h2 class="section-title">스피드 4단계 대출 절차</h2>
+                        <p class="section-desc">지점 방문이나 서류 준비의 번거로움 없이, 모바일에서 깔끔하게 마무리됩니다.</p>
                     </div>
 
-                    <div class="reviews-grid" id="reviewsGrid">
-                        <!-- Review 1 -->
-                        <div class="review-card">
-                            <div class="review-stars">★★★★★</div>
-                            <h3 class="review-title">"타사에서 부결되어 막막했는데 당일 500만원 입금받았습니다!"</h3>
-                            <p class="review-text">프리랜서라 소득 증빙이 애매해서 은행에서 다 거절당했는데, 든든한대부중개 상담원분이 친절하게 안내해주셔서 15분 만에 바로
-                                입금되었습니다.</p>
-                            <div class="review-writer">
-                                <span class="w-name">김*훈 님 (30대 프리랜서)</span>
-                                <span class="w-date">2026.07.25</span>
-                            </div>
+                    <div class="process-grid">
+                        <div class="process-card process-card-1">
+                            <div class="p-step-num">01</div>
+                            <div class="p-icon-box"><i class="bi bi-phone-vibrate-fill"></i></div>
+                            <h3>3분 안심 신청</h3>
+                            <p>성함, 연락처, 희망금액 입력 (가심사 단계는 신용점수 하락 없음)</p>
                         </div>
-
-                        <!-- Review 2 -->
-                        <div class="review-card">
-                            <div class="review-stars">★★★★★</div>
-                            <h3 class="review-title">"가족들 모르게 서류 없이 깔끔하게 처리해주셨어요."</h3>
-                            <p class="review-text">급하게 비상금이 필요했는데 전화 연락도 보안 유지해주시고 카톡으로 빠르게 처리해주셔서 너무 안심되었습니다.</p>
-                            <div class="review-writer">
-                                <span class="w-name">이*영 님 (40대 주부)</span>
-                                <span class="w-date">2026.07.27</span>
-                            </div>
+                        <div class="process-card process-card-2">
+                            <div class="p-step-num">02</div>
+                            <div class="p-icon-box"><i class="bi bi-headset"></i></div>
+                            <h3>1:1 안심 비밀 상담</h3>
+                            <p>전담 상담원 배정 후 가족·회사 알림 없는 맞춤 조건 안내</p>
                         </div>
+                        <div class="process-card process-card-3">
+                            <div class="p-step-num">03</div>
+                            <div class="p-icon-box"><i class="bi bi-file-earmark-check-fill"></i></div>
+                            <h3>스피드 승인 심사</h3>
+                            <p>무방문·비대면 간편 서류 확인 후 당일 승인 완료</p>
+                        </div>
+                        <div class="process-card process-card-4 active-process">
+                            <div class="p-step-num">04</div>
+                            <div class="p-icon-box"><i class="bi bi-bank2"></i></div>
+                            <h3>본인 통장 즉시 입금</h3>
+                            <p>승인 즉시 지정한 계좌로 15분 내 당일 안전 입금</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                        <!-- Review 3 -->
-                        <div class="review-card">
-                            <div class="review-stars">★★★★★</div>
-                            <h3 class="review-title">"한도조회해도 신용점수 안 깎여서 안심하고 신청했습니다."</h3>
-                            <p class="review-text">신용점수 떨어질까 봐 걱정했는데 가심사 조회는 이력 안 남는다고 해서 안심했어요. 승인 금액도 기대 이상이라 만족합니다.
+            <!-- 7. Trusted Counselor & Reviews -->
+            <section class="reviews-section" id="reviews">
+                <div class="container">
+
+                    <div class="counselor-banner-box">
+                        <img src="/images/trusted_consultant.webp" alt="든든한대부중개 전문 상담원" class="counselor-img"
+                            width="102" height="102" loading="lazy">
+                        <div class="counselor-info">
+                            <span class="c-badge"><i class="bi bi-person-check-fill"></i> 1:1 전담 안심 케어</span>
+                            <h3>"고객님의 어려운 순간, 정직하고 빠르게 함께하겠습니다."</h3>
+                            <p>든든한대부중개는 지자체 정식 등록업체로서 어떠한 이유로도 불법 수수료를 요구하지 않으며, 100% 비대면 익명 상담으로 고객님의 사생활을 철저히 보호합니다.
                             </p>
-                            <div class="review-writer">
-                                <span class="w-name">박*민 님 (20대 직장인)</span>
-                                <span class="w-date">2026.07.28</span>
-                            </div>
-                        </div>
-
-                        <!-- Review 4 -->
-                        <div class="review-card">
-                            <div class="review-stars">★★★★★</div>
-                            <h3 class="review-title">"가게 결제 대금 급했는데 2,000만원 당일 승인받았습니다!"</h3>
-                            <p class="review-text">자영업 원자재 결제일이 당장 오늘이라 피가 말랐는데, 신속 심사로 오후에 바로 통장 입금 처리되었습니다. 수수료 요구도 전혀
-                                없어요.</p>
-                            <div class="review-writer">
-                                <span class="w-name">최*성 님 (40대 자영업자)</span>
-                                <span class="w-date">2026.07.29</span>
-                            </div>
-                        </div>
-
-                        <!-- Review 5 -->
-                        <div class="review-card">
-                            <div class="review-stars">★★★★★</div>
-                            <h3 class="review-title">"고금리 대출 3군데 쓰던 거 하나로 묶어 이자 절반 줄었습니다!"</h3>
-                            <p class="review-text">여기저기 흩어져 있던 high-rate 대출 때문에 매달 이자 내기 벅찼는데, 저금리로 대환 통합해 주셔서 월 지출이
-                                절반으로 줄었습니다.</p>
-                            <div class="review-writer">
-                                <span class="w-name">정*우 님 (30대 직장인)</span>
-                                <span class="w-date">2026.07.30</span>
-                            </div>
-                        </div>
-
-                        <!-- Review 6 -->
-                        <div class="review-card">
-                            <div class="review-stars">★★★★★</div>
-                            <h3 class="review-title">"비밀보장이 확실해서 우편물이나 알림 없이 안심했어요."</h3>
-                            <p class="review-text">집이나 회사로 연락 올까 봐 심장이 조마조마했는데 100% 1:1 비대면 카톡 상담으로 깔끔하게 마무리가 되어서 정말
-                                감사합니다.</p>
-                            <div class="review-writer">
-                                <span class="w-name">강*희 님 (50대 주부)</span>
-                                <span class="w-date">2026.07.31</span>
-                            </div>
-                        </div>
-
-                        <!-- Review 7: NEW -->
-                        <div class="review-card">
-                            <div class="review-stars">★★★★★</div>
-                            <h3 class="review-title">"취준생 무직자라 걱정했는데 비상금 300만원 당일 해결!"</h3>
-                            <p class="review-text">무직 상태라 다 거절당했는데 친절한 상담원분이 비상금 대출로 무서류 15분 승인 도와주셔서 큰 고비 넘겼습니다.</p>
-                            <div class="review-writer">
-                                <span class="w-name">윤*진 님 (20대 무직자)</span>
-                                <span class="w-date">2026.08.01</span>
-                            </div>
-                        </div>
-
-                        <!-- Review 8: NEW -->
-                        <div class="review-card">
-                            <div class="review-stars">★★★★★</div>
-                            <h3 class="review-title">"직원 월급날 겹쳤는데 1,500만원 신속 입금으로 살았습니다."</h3>
-                            <p class="review-text">급하게 사업 운전자금이 시급했는데 깔끔하게 안심 심사 진행해 주셔서 당일 바로 급여 지급 완료했습니다.</p>
-                            <div class="review-writer">
-                                <span class="w-name">한*석 님 (40대 사업자)</span>
-                                <span class="w-date">2026.08.01</span>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- Mobile Touch Slider Pagination Dots -->
-                    <div class="mobile-slider-dots" id="reviewDots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                </div> <!-- End of reviews-slider-wrapper -->
-
-                <!-- 안심 한도조회 메인 신청 폼 섹션 (CRO 핵심 전환 요소) -->
-                <section class="main-apply-section" id="applicationFormArea">
-                    <div class="container">
-                        <div class="section-header">
-                            <span class="section-sub">QUICK APPLICATION</span>
-                            <h2 class="section-title">3분 안심 <span class="highlight-green">무료 한도조회</span></h2>
-                            <p class="section-desc">신용점수에 전혀 영향 없는 안심 가심사로, 나의 대출 가능 한도를 지금 바로 확인하세요.</p>
+                    <div class="reviews-slider-wrapper">
+                        <div class="section-header text-center" style="margin-bottom: 30px;">
+                            <span class="section-sub">REAL REVIEWS</span>
+                            <h2 class="section-title">고객 실제 이용 후기</h2>
+                            <p class="section-desc">든든한대부중개를 통해 긴급 자금을 해결하신 고객님들의 솔직 후기입니다.</p>
                         </div>
 
-                        <div class="main-form-card">
-                            <div class="form-trust-badges">
-                                <span class="form-badge"><i class="bi bi-shield-lock-fill"></i> SSL 256bit 암호화</span>
-                                <span class="form-badge"><i class="bi bi-file-earmark-check-fill"></i> 정식 등록업체</span>
-                                <span class="form-badge"><i class="bi bi-cash-coin"></i> 수수료 0원</span>
-                            </div>
-
-                            <form id="mainLoanForm" class="main-form-grid" action="/api/apply" method="POST">
-                                <div class="form-field">
-                                    <label for="mainUserName"><i class="bi bi-person-fill"></i> 성함</label>
-                                    <input type="text" id="mainUserName" name="userName" placeholder="실명을 입력해 주세요" required>
-                                </div>
-                                <div class="form-field">
-                                    <label for="mainUserPhone"><i class="bi bi-phone-fill"></i> 연락처</label>
-                                    <input type="tel" id="mainUserPhone" name="userPhone" placeholder="'-' 제외 숫자만 입력" maxlength="11" required>
-                                </div>
-                                <div class="form-field">
-                                    <label for="mainUserAmount"><i class="bi bi-wallet2"></i> 희망금액</label>
-                                    <select id="mainUserAmount" name="userAmount" required>
-                                        <option value="" disabled selected>선택해 주세요</option>
-                                        <option value="100만원 이하">100만원 이하 (비상금)</option>
-                                        <option value="300만원">300만원</option>
-                                        <option value="500만원">500만원</option>
-                                        <option value="1,000만원">1,000만원</option>
-                                        <option value="2,000만원">2,000만원</option>
-                                        <option value="3,000만원 이상">3,000만원 이상</option>
-                                    </select>
-                                </div>
-                                <div class="form-field form-agree-field">
-                                    <input type="checkbox" id="mainAgreeChk" name="agreeChk" required checked>
-                                    <label for="mainAgreeChk">개인정보 수집 및 이용에 동의합니다</label>
-                                    <button type="button" class="btn-terms-pop" onclick="openModal('privacyModal')">[<uc57d관보기>]</button>
-                                </div>
-                                <button type="submit" class="btn-main-submit">
-                                    <i class="bi bi-lightning-charge-fill"></i> 3분 안심 한도조회 신청
-                                </button>
-                                <p class="form-micro-copy"><i class="bi bi-lock-fill"></i> 고객님의 정보는 암호화되어 안전하게 보호됩니다</p>
-                            </form>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 8. FAQ Accordion -->
-                <section class="faq-section" id="faq">
-                    <div class="container">
-                        <div class="section-header">
-                            <span class="section-sub">FAQ</span>
-                            <h2 class="section-title">자주 묻는 질문</h2>
-                            <p class="section-desc">궁금하신 사항을 정직하고 정확하게 답변해 드립니다.</p>
-                        </div>
-
-                        <div class="faq-accordion">
-                            <div class="faq-item">
-                                <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Q1. 한도조회만 해도 신용점수가 하락하나요?</span>
-                                    <i class="bi bi-plus-lg faq-icon"></i>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>아닙니다. 단순 무료 한도 조회 및 가심사는 신용점수에 전혀 영향을 주지 않으며 조회 이력이 남지 않습니다.<br>
-                                        (단, 실제 대출 계약 및 실행 시에는 대부업 대출 특성상 개인신용평점이 하락할 수 있습니다.)</p>
+                        <div class="reviews-grid" id="reviewsGrid">
+                            <!-- Review 1 -->
+                            <div class="review-card">
+                                <div class="review-stars">★★★★★</div>
+                                <h3 class="review-title">"타사에서 부결되어 막막했는데 당일 500만원 입금받았습니다!"</h3>
+                                <p class="review-text">프리랜서라 소득 증빙이 애매해서 은행에서 다 거절당했는데, 든든한대부중개 상담원분이 친절하게 안내해주셔서 15분 만에
+                                    바로
+                                    입금되었습니다.</p>
+                                <div class="review-writer">
+                                    <span class="w-name">김*훈 님 (30대 프리랜서)</span>
+                                    <span class="w-date">2026.07.25</span>
                                 </div>
                             </div>
 
-                            <div class="faq-item">
-                                <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Q2. 무직자나 주부도 신청이 가능한가요?</span>
-                                    <i class="bi bi-plus-lg faq-icon"></i>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>네, 가능합니다. 4대보험 미가입자, 무직자, 전업주부, 대학생, 청년층도 추정 소득이나 휴대폰 본인 인증 등을 통해 비대면으로 간편하게 한도
-                                        확인 및 대출
-                                        이용이 가능합니다.</p>
+                            <!-- Review 2 -->
+                            <div class="review-card">
+                                <div class="review-stars">★★★★★</div>
+                                <h3 class="review-title">"가족들 모르게 서류 없이 깔끔하게 처리해주셨어요."</h3>
+                                <p class="review-text">급하게 비상금이 필요했는데 전화 연락도 보안 유지해주시고 카톡으로 빠르게 처리해주셔서 너무 안심되었습니다.</p>
+                                <div class="review-writer">
+                                    <span class="w-name">이*영 님 (40대 주부)</span>
+                                    <span class="w-date">2026.07.27</span>
                                 </div>
                             </div>
 
-                            <div class="faq-item">
-                                <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Q3. 취급수수료나 추가 수수료가 발생하나요?</span>
-                                    <i class="bi bi-plus-lg faq-icon"></i>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>일체 발생하지 않습니다. 대부중개 수수료나 선입금을 요구하는 것은 100% 불법입니다. 든든한대부중개는 취급수수료, 만기연장수수료 등 어떠한 추가
-                                        비용도 요구하지
-                                        않습니다.</p>
+                            <!-- Review 3 -->
+                            <div class="review-card">
+                                <div class="review-stars">★★★★★</div>
+                                <h3 class="review-title">"한도조회해도 신용점수 안 깎여서 안심하고 신청했습니다."</h3>
+                                <p class="review-text">신용점수 떨어질까 봐 걱정했는데 가심사 조회는 이력 안 남는다고 해서 안심했어요. 승인 금액도 기대 이상이라
+                                    만족합니다.
+                                </p>
+                                <div class="review-writer">
+                                    <span class="w-name">박*민 님 (20대 직장인)</span>
+                                    <span class="w-date">2026.07.28</span>
                                 </div>
                             </div>
 
-                            <div class="faq-item">
-                                <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Q4. 신청 후 입금까지 얼마나 걸리나요?</span>
-                                    <i class="bi bi-plus-lg faq-icon"></i>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>신청 완료 후, 1:1 전문 상담원 배정 후 10분~30분 이내에 본인 명의 계좌로 당일 입금이 완료됩니다.</p>
+                            <!-- Review 4 -->
+                            <div class="review-card">
+                                <div class="review-stars">★★★★★</div>
+                                <h3 class="review-title">"가게 결제 대금 급했는데 2,000만원 당일 승인받았습니다!"</h3>
+                                <p class="review-text">자영업 원자재 결제일이 당장 오늘이라 피가 말랐는데, 신속 심사로 오후에 바로 통장 입금 처리되었습니다. 수수료
+                                    요구도 전혀
+                                    없어요.</p>
+                                <div class="review-writer">
+                                    <span class="w-name">최*성 님 (40대 자영업자)</span>
+                                    <span class="w-date">2026.07.29</span>
                                 </div>
                             </div>
 
-                            <div class="faq-item">
-                                <button class="faq-question" onclick="toggleFaq(this)">
-                                    <span>Q5. 중도상환수수료나 조기상환 조건이 있나요?</span>
-                                    <i class="bi bi-plus-lg faq-icon"></i>
-                                </button>
-                                <div class="faq-answer">
-                                    <p>든든한대부중개의 상품은 중도상환수수료가 없거나 상품 정책에 따라 최소화(1.8% 이내)되어 있어, 여유 자금이 생기셨을 때 언제든지 수수료 부담
-                                        없이 자유롭게
-                                        상환하실 수 있습니다.</p>
+                            <!-- Review 5 -->
+                            <div class="review-card">
+                                <div class="review-stars">★★★★★</div>
+                                <h3 class="review-title">"고금리 대출 3군데 쓰던 거 하나로 묶어 이자 절반 줄었습니다!"</h3>
+                                <p class="review-text">여기저기 흩어져 있던 high-rate 대출 때문에 매달 이자 내기 벅찼는데, 저금리로 대환 통합해 주셔서 월 지출이
+                                    절반으로 줄었습니다.</p>
+                                <div class="review-writer">
+                                    <span class="w-name">정*우 님 (30대 직장인)</span>
+                                    <span class="w-date">2026.07.30</span>
+                                </div>
+                            </div>
+
+                            <!-- Review 6 -->
+                            <div class="review-card">
+                                <div class="review-stars">★★★★★</div>
+                                <h3 class="review-title">"비밀보장이 확실해서 우편물이나 알림 없이 안심했어요."</h3>
+                                <p class="review-text">집이나 회사로 연락 올까 봐 심장이 조마조마했는데 100% 1:1 비대면 카톡 상담으로 깔끔하게 마무리가 되어서 정말
+                                    감사합니다.</p>
+                                <div class="review-writer">
+                                    <span class="w-name">강*희 님 (50대 주부)</span>
+                                    <span class="w-date">2026.07.31</span>
+                                </div>
+                            </div>
+
+                            <!-- Review 7: NEW -->
+                            <div class="review-card">
+                                <div class="review-stars">★★★★★</div>
+                                <h3 class="review-title">"취준생 무직자라 걱정했는데 비상금 300만원 당일 해결!"</h3>
+                                <p class="review-text">무직 상태라 다 거절당했는데 친절한 상담원분이 비상금 대출로 무서류 15분 승인 도와주셔서 큰 고비 넘겼습니다.
+                                </p>
+                                <div class="review-writer">
+                                    <span class="w-name">윤*진 님 (20대 무직자)</span>
+                                    <span class="w-date">2026.08.01</span>
+                                </div>
+                            </div>
+
+                            <!-- Review 8: NEW -->
+                            <div class="review-card">
+                                <div class="review-stars">★★★★★</div>
+                                <h3 class="review-title">"직원 월급날 겹쳤는데 1,500만원 신속 입금으로 살았습니다."</h3>
+                                <p class="review-text">급하게 사업 운전자금이 시급했는데 깔끔하게 안심 심사 진행해 주셔서 당일 바로 급여 지급 완료했습니다.</p>
+                                <div class="review-writer">
+                                    <span class="w-name">한*석 님 (40대 사업자)</span>
+                                    <span class="w-date">2026.08.01</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-</main>
 
-<%- include('partials/modals') %>
-                    <%- include('partials/floating-bar') %>
-                        <%- include('partials/footer') %>
+                        <!-- Mobile Touch Slider Pagination Dots -->
+                        <div class="mobile-slider-dots" id="reviewDots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div> <!-- End of reviews-slider-wrapper -->
+
+                    <!-- 안심 한도조회 메인 신청 폼 섹션 (CRO 핵심 전환 요소) -->
+                    <section class="main-apply-section" id="applicationFormArea">
+                        <div class="container">
+                            <div class="section-header">
+                                <span class="section-sub">QUICK APPLICATION</span>
+                                <h2 class="section-title">3분 안심 <span class="highlight-green">무료 한도조회</span></h2>
+                                <p class="section-desc">신용점수에 전혀 영향 없는 안심 가심사로, 나의 대출 가능 한도를 지금 바로 확인하세요.</p>
+                            </div>
+
+                            <div class="main-form-card">
+                                <div class="form-trust-badges">
+                                    <span class="form-badge"><i class="bi bi-shield-lock-fill"></i> SSL 256bit
+                                        암호화</span>
+                                    <span class="form-badge"><i class="bi bi-file-earmark-check-fill"></i> 정식
+                                        등록업체</span>
+                                    <span class="form-badge"><i class="bi bi-cash-coin"></i> 수수료 0원</span>
+                                </div>
+
+                                <form id="mainLoanForm" class="main-form-grid" action="/api/apply" method="POST">
+                                    <div class="form-field">
+                                        <label for="mainUserName"><i class="bi bi-person-fill"></i> 성함</label>
+                                        <input type="text" id="mainUserName" name="userName" placeholder="실명을 입력해 주세요"
+                                            required>
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="mainUserPhone"><i class="bi bi-phone-fill"></i> 연락처</label>
+                                        <input type="tel" id="mainUserPhone" name="userPhone"
+                                            placeholder="'-' 제외 숫자만 입력" maxlength="11" required>
+                                    </div>
+                                    <div class="form-field">
+                                        <label for="mainUserAmount"><i class="bi bi-wallet2"></i> 희망금액</label>
+                                        <select id="mainUserAmount" name="userAmount" required>
+                                            <option value="" disabled selected>선택해 주세요</option>
+                                            <option value="100만원 이하">100만원 이하 (비상금)</option>
+                                            <option value="300만원">300만원</option>
+                                            <option value="500만원">500만원</option>
+                                            <option value="1,000만원">1,000만원</option>
+                                            <option value="2,000만원">2,000만원</option>
+                                            <option value="3,000만원 이상">3,000만원 이상</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-field form-agree-field">
+                                        <input type="checkbox" id="mainAgreeChk" name="agreeChk" required checked>
+                                        <label for="mainAgreeChk">개인정보 수집 및 이용에 동의합니다</label>
+                                        <button type="button" class="btn-terms-pop"
+                                            onclick="openModal('privacyModal')">[<uc57d관보기>]</button>
+                                    </div>
+                                    <button type="submit" class="btn-main-submit">
+                                        <i class="bi bi-lightning-charge-fill"></i> 3분 안심 한도조회 신청
+                                    </button>
+                                    <p class="form-micro-copy"><i class="bi bi-lock-fill"></i> 고객님의 정보는 암호화되어 안전하게 보호됩니다
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 8. FAQ Accordion -->
+                    <section class="faq-section" id="faq">
+                        <div class="container">
+                            <div class="section-header">
+                                <span class="section-sub">FAQ</span>
+                                <h2 class="section-title">자주 묻는 질문</h2>
+                                <p class="section-desc">궁금하신 사항을 정직하고 정확하게 답변해 드립니다.</p>
+                            </div>
+
+                            <div class="faq-accordion">
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFaq(this)">
+                                        <span>Q1. 한도조회만 해도 신용점수가 하락하나요?</span>
+                                        <i class="bi bi-plus-lg faq-icon"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>아닙니다. 단순 무료 한도 조회 및 가심사는 신용점수에 전혀 영향을 주지 않으며 조회 이력이 남지 않습니다.<br>
+                                            (단, 실제 대출 계약 및 실행 시에는 대부업 대출 특성상 개인신용평점이 하락할 수 있습니다.)</p>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFaq(this)">
+                                        <span>Q2. 무직자나 주부도 신청이 가능한가요?</span>
+                                        <i class="bi bi-plus-lg faq-icon"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>네, 가능합니다. 4대보험 미가입자, 무직자, 전업주부, 대학생, 청년층도 추정 소득이나 휴대폰 본인 인증 등을 통해 비대면으로 간편하게
+                                            한도
+                                            확인 및 대출
+                                            이용이 가능합니다.</p>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFaq(this)">
+                                        <span>Q3. 취급수수료나 추가 수수료가 발생하나요?</span>
+                                        <i class="bi bi-plus-lg faq-icon"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>일체 발생하지 않습니다. 대부중개 수수료나 선입금을 요구하는 것은 100% 불법입니다. 든든한대부중개는 취급수수료, 만기연장수수료 등
+                                            어떠한 추가
+                                            비용도 요구하지
+                                            않습니다.</p>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFaq(this)">
+                                        <span>Q4. 신청 후 입금까지 얼마나 걸리나요?</span>
+                                        <i class="bi bi-plus-lg faq-icon"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>신청 완료 후, 1:1 전문 상담원 배정 후 10분~30분 이내에 본인 명의 계좌로 당일 입금이 완료됩니다.</p>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <button class="faq-question" onclick="toggleFaq(this)">
+                                        <span>Q5. 중도상환수수료나 조기상환 조건이 있나요?</span>
+                                        <i class="bi bi-plus-lg faq-icon"></i>
+                                    </button>
+                                    <div class="faq-answer">
+                                        <p>든든한대부중개의 상품은 중도상환수수료가 없거나 상품 정책에 따라 최소화(1.8% 이내)되어 있어, 여유 자금이 생기셨을 때 언제든지 수수료
+                                            부담
+                                            없이 자유롭게
+                                            상환하실 수 있습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+        </main>
+
+        <%- include('partials/modals') %>
+            <%- include('partials/floating-bar') %>
+                <%- include('partials/footer') %>
