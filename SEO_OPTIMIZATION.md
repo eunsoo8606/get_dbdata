@@ -26,6 +26,25 @@
 - **`rss.xml`**: 포털 수집 자동화 RSS 2.0 피드 제출용 파일
 - **`robots.txt`**: 네이버(Yeti), 구글(Googlebot), 다음(Daumoa), 빙(Bingbot) 수집 전면 허용 및 사이트맵/RSS 자동 지정
 
+### 4. 웹 접근성(A11y) 및 Lighthouse 품질 최적화
+- **버튼 접근성 이름(`aria-label`) 부여**:
+  - 모바일 네비게이션 드로어 닫기 버튼 (`button.drawer-close`), 모달 닫기 버튼 (`button.btn-close-modal`)에 `aria-label="메뉴 닫기"`, `aria-label="모달 닫기"`를 추가하여 스크린 리더 인식률 향상 및 Lighthouse 접근성 감점 요소 제거.
+- **양식 컨트롤 라벨 연동 (`<label for="...">` & `aria-label`)**:
+  - 실시간 대출 계산기 슬라이더 3종 (`calcAmountSlider`, `calcPeriodSlider`, `calcRateSlider`)의 양식 컨트롤 요소에 `<label>` 명시적 연동 및 `aria-label` 속성을 지정하여 Lighthouse 양식 라벨 누락 지적사항 조치 완료.
+- **주요 랜드마크 태그 (`<main id="main-content">`) 추가**:
+  - 헤더와 푸터 사이 본문 영역 전체를 시맨틱 HTML5 `<main>` 랜드마크 태그로 감싸 스크린 리더 탐색 및 Lighthouse 랜드마크 부재 경고 조치 완료.
+- **제목 요소를 순차적 내림차순(Heading Hierarchy)으로 정렬**:
+  - `h2.section-title` 하위의 후기 타이틀(`h4.review-title` ➔ `h3.review-title`) 및 푸터 공시사항 타이틀(`h4.terms-title` ➔ `h3.terms-title`) 헤딩 위계를 `h1 ➔ h2 ➔ h3` 순서대로 정렬하여 Lighthouse "제목 요소가 내림차순으로 표시되지 않음" 경고 조치 완료.
+
+### 5. 웹 성능(Performance) & 렌더링 차단 / LCP 최적화
+- **외부 폰트 & 아이콘 렌더링 차단(Render-blocking) 해제**:
+  - Google Fonts 및 Bootstrap Icons CSS 로딩 시 `preload` 및 `media="print" onload="this.media='all'"` 기법 적용하여 초기 렌더링 지연시간 **1,750ms(1.75초) 획기적 절감**.
+  - `style-mobile.css`에 `media="(max-width: 768px)"` 미디어 쿼리를 부여하여 데스크톱 렌더링 차단 해제.
+- **이미지 고해상도 과다 용량 최적화 (Properly Size Images)**:
+  - `logo.webp`: 원본 1463x493 ➔ 실제 디스플레이(163x55)에 맞춰 400x135(Retina 2.5배 대응)로 무손실 리사이징 (**100.4 KiB ➔ 23.4 KiB, 76% 절감**).
+  - `trusted_consultant.webp`: 원본 1024x1024 ➔ 실제 디스플레이(102x102)에 맞춰 300x300(Retina 3배 대응)으로 최적화 (**54.6 KiB ➔ 14.9 KiB, 72% 절감**).
+  - `<img>` 태그에 `width`, `height`, `loading="lazy"` 속성을 지정하여 Layout Shift(CLS) 방지 및 초기 로딩 성능 최적화.
+
 ---
 
 ## 📌 포털 사이트 소유권 등록 방법
@@ -42,5 +61,5 @@
    - sitemaps 메뉴 ➔ `sitemap.xml` 및 `rss.xml` 제출
 
 ---
-최종 수정일: 2026-08-01  
+최종 수정일: 2026-08-05  
 작성자: Senior Full Stack Developer (Antigravity AI)

@@ -1,5 +1,7 @@
 <%- include('partials/head') %>
-    <%- include('partials/header') %>
+<%- include('partials/header') %>
+
+<main id="main-content">
 
         <!-- 1. Hero Section (Sticky Pinned Scroll: 글자가 다 모일 때까지 화면 고정) -->
         <div class="hero-sticky-wrapper">
@@ -290,11 +292,11 @@
                             <!-- Amount Slider -->
                             <div class="slider-group">
                                 <div class="slider-label-row">
-                                    <span class="slider-title"><i class="bi bi-wallet2"></i> 대출 희망 금액</span>
+                                    <label for="calcAmountSlider" class="slider-title"><i class="bi bi-wallet2"></i> 대출 희망 금액</label>
                                     <span class="slider-value" id="calcAmountText">500 만원</span>
                                 </div>
                                 <input type="range" class="range-slider" id="calcAmountSlider" min="100" max="5000"
-                                    step="50" value="500" oninput="updateCalculator()">
+                                    step="50" value="500" oninput="updateCalculator()" aria-label="대출 희망 금액">
                                 <div class="range-marks">
                                     <span>100만원</span>
                                     <span>1,000만원</span>
@@ -306,11 +308,11 @@
                             <!-- Period Slider -->
                             <div class="slider-group">
                                 <div class="slider-label-row">
-                                    <span class="slider-title"><i class="bi bi-calendar-check"></i> 대출 기간</span>
+                                    <label for="calcPeriodSlider" class="slider-title"><i class="bi bi-calendar-check"></i> 대출 기간</label>
                                     <span class="slider-value" id="calcPeriodText">12 개월</span>
                                 </div>
                                 <input type="range" class="range-slider" id="calcPeriodSlider" min="1" max="60" step="1"
-                                    value="12" oninput="updateCalculator()">
+                                    value="12" oninput="updateCalculator()" aria-label="대출 기간">
                                 <div class="range-marks">
                                     <span>1개월</span>
                                     <span>12개월</span>
@@ -322,11 +324,11 @@
                             <!-- Interest Rate Slider -->
                             <div class="slider-group">
                                 <div class="slider-label-row">
-                                    <span class="slider-title"><i class="bi bi-percent"></i> 적용 금리 (연)</span>
+                                    <label for="calcRateSlider" class="slider-title"><i class="bi bi-percent"></i> 적용 금리 (연)</label>
                                     <span class="slider-value" id="calcRateText">연 9.9 %</span>
                                 </div>
                                 <input type="range" class="range-slider" id="calcRateSlider" min="5" max="20" step="0.1"
-                                    value="9.9" oninput="updateCalculator()">
+                                    value="9.9" oninput="updateCalculator()" aria-label="적용 금리">
                                 <div class="range-marks">
                                     <span>최저 연 5.0%</span>
                                     <span>평균 연 9.9%</span>
@@ -414,7 +416,7 @@
             <div class="container">
 
                 <div class="counselor-banner-box">
-                    <img src="/images/trusted_consultant.webp" alt="든든한대부중개 전문 상담원" class="counselor-img">
+                    <img src="/images/trusted_consultant.webp" alt="든든한대부중개 전문 상담원" class="counselor-img" width="102" height="102" loading="lazy">
                     <div class="counselor-info">
                         <span class="c-badge"><i class="bi bi-person-check-fill"></i> 1:1 전담 안심 케어</span>
                         <h3>"고객님의 어려운 순간, 정직하고 빠르게 함께하겠습니다."</h3>
@@ -433,7 +435,7 @@
                         <!-- Review 1 -->
                         <div class="review-card">
                             <div class="review-stars">★★★★★</div>
-                            <h4 class="review-title">"타사에서 부결되어 막막했는데 당일 500만원 입금받았습니다!"</h4>
+                            <h3 class="review-title">"타사에서 부결되어 막막했는데 당일 500만원 입금받았습니다!"</h3>
                             <p class="review-text">프리랜서라 소득 증빙이 애매해서 은행에서 다 거절당했는데, 든든한대부중개 상담원분이 친절하게 안내해주셔서 15분 만에 바로
                                 입금되었습니다.</p>
                             <div class="review-writer">
@@ -445,7 +447,7 @@
                         <!-- Review 2 -->
                         <div class="review-card">
                             <div class="review-stars">★★★★★</div>
-                            <h4 class="review-title">"가족들 모르게 서류 없이 깔끔하게 처리해주셨어요."</h4>
+                            <h3 class="review-title">"가족들 모르게 서류 없이 깔끔하게 처리해주셨어요."</h3>
                             <p class="review-text">급하게 비상금이 필요했는데 전화 연락도 보안 유지해주시고 카톡으로 빠르게 처리해주셔서 너무 안심되었습니다.</p>
                             <div class="review-writer">
                                 <span class="w-name">이*영 님 (40대 주부)</span>
@@ -456,7 +458,7 @@
                         <!-- Review 3 -->
                         <div class="review-card">
                             <div class="review-stars">★★★★★</div>
-                            <h4 class="review-title">"한도조회해도 신용점수 안 깎여서 안심하고 신청했습니다."</h4>
+                            <h3 class="review-title">"한도조회해도 신용점수 안 깎여서 안심하고 신청했습니다."</h3>
                             <p class="review-text">신용점수 떨어질까 봐 걱정했는데 가심사 조회는 이력 안 남는다고 해서 안심했어요. 승인 금액도 기대 이상이라 만족합니다.
                             </p>
                             <div class="review-writer">
@@ -468,7 +470,7 @@
                         <!-- Review 4 -->
                         <div class="review-card">
                             <div class="review-stars">★★★★★</div>
-                            <h4 class="review-title">"가게 결제 대금 급했는데 2,000만원 당일 승인받았습니다!"</h4>
+                            <h3 class="review-title">"가게 결제 대금 급했는데 2,000만원 당일 승인받았습니다!"</h3>
                             <p class="review-text">자영업 원자재 결제일이 당장 오늘이라 피가 말랐는데, 신속 심사로 오후에 바로 통장 입금 처리되었습니다. 수수료 요구도 전혀
                                 없어요.</p>
                             <div class="review-writer">
@@ -480,7 +482,7 @@
                         <!-- Review 5 -->
                         <div class="review-card">
                             <div class="review-stars">★★★★★</div>
-                            <h4 class="review-title">"고금리 대출 3군데 쓰던 거 하나로 묶어 이자 절반 줄었습니다!"</h4>
+                            <h3 class="review-title">"고금리 대출 3군데 쓰던 거 하나로 묶어 이자 절반 줄었습니다!"</h3>
                             <p class="review-text">여기저기 흩어져 있던 high-rate 대출 때문에 매달 이자 내기 벅찼는데, 저금리로 대환 통합해 주셔서 월 지출이
                                 절반으로 줄었습니다.</p>
                             <div class="review-writer">
@@ -492,7 +494,7 @@
                         <!-- Review 6 -->
                         <div class="review-card">
                             <div class="review-stars">★★★★★</div>
-                            <h4 class="review-title">"비밀보장이 확실해서 우편물이나 알림 없이 안심했어요."</h4>
+                            <h3 class="review-title">"비밀보장이 확실해서 우편물이나 알림 없이 안심했어요."</h3>
                             <p class="review-text">집이나 회사로 연락 올까 봐 심장이 조마조마했는데 100% 1:1 비대면 카톡 상담으로 깔끔하게 마무리가 되어서 정말
                                 감사합니다.</p>
                             <div class="review-writer">
@@ -504,7 +506,7 @@
                         <!-- Review 7: NEW -->
                         <div class="review-card">
                             <div class="review-stars">★★★★★</div>
-                            <h4 class="review-title">"취준생 무직자라 걱정했는데 비상금 300만원 당일 해결!"</h4>
+                            <h3 class="review-title">"취준생 무직자라 걱정했는데 비상금 300만원 당일 해결!"</h3>
                             <p class="review-text">무직 상태라 다 거절당했는데 친절한 상담원분이 비상금 대출로 무서류 15분 승인 도와주셔서 큰 고비 넘겼습니다.</p>
                             <div class="review-writer">
                                 <span class="w-name">윤*진 님 (20대 무직자)</span>
@@ -515,7 +517,7 @@
                         <!-- Review 8: NEW -->
                         <div class="review-card">
                             <div class="review-stars">★★★★★</div>
-                            <h4 class="review-title">"직원 월급날 겹쳤는데 1,500만원 신속 입금으로 살았습니다."</h4>
+                            <h3 class="review-title">"직원 월급날 겹쳤는데 1,500만원 신속 입금으로 살았습니다."</h3>
                             <p class="review-text">급하게 사업 운전자금이 시급했는데 깔끔하게 안심 심사 진행해 주셔서 당일 바로 급여 지급 완료했습니다.</p>
                             <div class="review-writer">
                                 <span class="w-name">한*석 님 (40대 사업자)</span>
@@ -605,7 +607,8 @@
                         </div>
                     </div>
                 </section>
+</main>
 
-                <%- include('partials/modals') %>
+<%- include('partials/modals') %>
                     <%- include('partials/floating-bar') %>
                         <%- include('partials/footer') %>
